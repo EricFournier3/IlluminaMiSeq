@@ -7,13 +7,17 @@ from watchdog.events import FileSystemEventHandler, FileCreatedEvent
 import Logger
 import ParameterHandler
 
-
 """
 Eric Fournier 2019-07-30
 Script de transfert automatique des runs MiSeq terminées vers S:\\Partage\LSPQ_MiSeq
 
-A compiler en format .exe avec la commande suivante
-pyinstaller.exe --onefile --icon path_vers_icone CheckFinishedMiSeqRun.py
+Procedure pour compiler avec pyinstaller:
+    1- Copier les scripts CheckFinishedMiSeqRun.py, Logger.py et ParameterHandler.py dans C:\Users\foueri01\Documents\PyinstallerCompilation
+    2- aller dans C:\Users\foueri01\Documents\PyinstallerCompilation avec une console ligne de commande
+    3- Executer la commande suivante
+            pyinstaller.exe --onefile --icon= CheckFinishedMiSeqRun.py
+    4- L executable CheckFinishedMiSeqRun.exe sera dans C:\Users\foueri01\Documents\PyinstallerCompilation\Dist
+            
 """
 
 #Choisir le niveau de debuggage
@@ -21,7 +25,10 @@ pyinstaller.exe --onefile --icon path_vers_icone CheckFinishedMiSeqRun.py
 #1 pour tester sur INSPQ-6499
 #2 pour tester sur le Miseq
 #3 pour production
-my_debug_level = 1
+
+#my_debug_level = 1
+
+my_debug_level = int(raw_input("Enter un niveau de debugage:\n1 pour tester sur INSPQ-6499\n2 pour tester sur le Miseq\n3 pour production\n > "))
 
 class Watcher:
     """
