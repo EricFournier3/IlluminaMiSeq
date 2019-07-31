@@ -17,6 +17,7 @@ pyinstaller.exe --onefile --icon path_vers_icone CheckFinishedMiSeqRun.py
 """
 
 #Choisir le niveau de debuggage
+
 #1 pour tester sur INSPQ-6499
 #2 pour tester sur le Miseq
 #3 pour production
