@@ -44,6 +44,8 @@ class Watcher:
         self.path_setter.OpenParamFile()
         self.path_setter.ParseParamFile()
 
+        self.logfile = self.path_setter.GetLogginFile()
+
         # Le repertoire a scanner par le watchdog
         self.DIRECTORY_TO_WATCH =self.path_setter.GetMiSeqRootDir()
 
@@ -54,7 +56,7 @@ class Watcher:
         Pour demarrer le scan des runs MiSeq terminees
         :return:
         """
-        event_handler = Handler()
+        event_handler = Handler(self.logfile)
         self.observer.schedule(event_handler, self.DIRECTORY_TO_WATCH, recursive=True)
         self.observer.start()
 
@@ -73,8 +75,8 @@ class Handler(FileSystemEventHandler):
 
     """
 
-    def __init__(self):
-        self.ftl = Logger.FileTransferLogger(os.path.basename(__file__),my_debug_level)
+    def __init__(self,logfile):
+        self.ftl = Logger.FileTransferLogger(os.path.basename(__file__),logfile)
 
     def ExportToLspqMiSeqExperimental(self):
         '''
@@ -148,6 +150,8 @@ class Handler(FileSystemEventHandler):
                 self.path_setter = ParameterHandler.PathSetter(my_debug_level)
                 self.path_setter.OpenParamFile()
                 self.path_setter.ParseParamFile()
+
+
 
                 #path vers la run sur le MiSeq
                 runpath = os.path.dirname(event.src_path)

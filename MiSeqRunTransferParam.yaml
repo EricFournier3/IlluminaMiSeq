@@ -2,13 +2,13 @@
 
 loggin:
  - debug_inspq_6499: U:\TEMP\LSPQ_MiSeq\FinishedRunLog.log
- - debug_miseq: \\swsfi52p\Secure_stemarie\Partage\LSPQ_MiSeq\TEMP_TEST\FinishedRunLog.log
- - no_debug: \\swsfi52p\Secure_stemarie\Partage\LSPQ_MiSeq\FinishedRunLog.log
+   debug_miseq: S:\TEMP_TEST\FinishedRunLog.log
+   no_debug: S:\FinishedRunLog.log
 runs_on_miseq:
  - debug_inspq_6499: U:\TEMP\MiSeqOutput
- - debug_miseq: D:\TESTING\MiSeqOutput
- - no_debug: D:\Illumina\MiSeqOutput
+   debug_miseq: D:\TESTING\MiSeqOutput
+   no_debug: D:\Illumina\MiSeqOutput
 runs_on_partage_lspq_miseq:
  - debug_inspq_6499: U:\TEMP\LSPQ_MiSeq
- - debug_miseq: \\swsfi52p\Secure_stemarie\Partage\LSPQ_MiSeq\TEMP_TEST
- - no_debug: \\swsfi52p\Secure_stemarie\Partage\LSPQ_MiSeq
+   debug_miseq: S:\TEMP_TEST
+   no_debug: S:\

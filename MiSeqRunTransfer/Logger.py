@@ -5,17 +5,12 @@ import os
 Eric Fournier 2019-07-31
 """
 
-#Pour debug
-debug_setting = {1: 'debug_inspq_6499', 2: 'debug_MiSeq', 3: 'none'}
 
 class FileTransferLogger:
     """
     Pour Loggin des transferts de fichiers des runs MiSeq terminees vers S:\\Partage\LSPQ_MiSeq
     """
-    def __init__(self,logger_name,debug_level):
-
-        #niveau de debuggage
-        self.debug_val = debug_setting[debug_level]
+    def __init__(self,logger_name,output):
 
         #niveau de login
         self.log_level = logging.INFO
@@ -24,7 +19,7 @@ class FileTransferLogger:
         self.logger_name = logger_name + '_Logger'
 
         #pour les path vers le FinishedRunLog.log
-        self.output = ""
+        self.output = output
 
         #le logger
         self.logger = None
@@ -37,9 +32,6 @@ class FileTransferLogger:
 
         #pour affichage dans FinishedRunLog.log
         self.file_handler = None
-
-        #pour definir le FinishedRunLog.log
-        self.SetOutput()
 
         #Setting du logger, formatter et handlers
         self.Configure()
@@ -104,14 +96,24 @@ class FileTransferLogger:
         self.SetFileHandler()
         self.AddHandlerToLogger()
 
-    def SetOutput(self):
+'''
+    def SetOutput(self, output):
         """
         Path du FinishedRunLog.log selon le niveau de debuggage
         :return:
         """
+
+        self.output =
         if (self.debug_val == 'debug_inspq_6499'):
-            self.output = os.path.join('U:', 'TEMP', 'LSPQ_MiSeq', 'FinishedRunLog.log')
-        elif (self.debug_val == 'debug_MiSeq'):
-            self.output = os.path.join('\\swsfi52p', 'Secure_stemarie', 'Partage', 'LSPQ_MiSeq', 'TEMP_TEST','FinishedRunLog.log')
+            #self.output = os.path.join('U:', 'TEMP', 'LSPQ_MiSeq', 'FinishedRunLog.log')
+            self.output = r"U:\TEMP\LSPQ_MiSeq\FinishedRunLog.log"
+        elif (self.debug_val == 'debug_miseq'):
+            #self.output = os.path.join('\\swsfi52p', 'Secure_stemarie', 'Partage', 'LSPQ_MiSeq', 'TEMP_TEST','FinishedRunLog.log')
+            #self.output = os.path.join('S:', 'Partage', 'LSPQ_MiSeq', 'TEMP_TEST','FinishedRunLog.log')
+            self.output = r"S:\Partage\LSPQ_MiSeq\TEMP_TEST\TEMP_TEST','FinishedRunLog.log"
+
         else:
-            self.output = os.path.join('\\swsfi52p', 'Secure_stemarie', 'Partage', 'LSPQ_MiSeq', 'FinishedRunLog.log')
+            #self.output = os.path.join('\\swsfi52p', 'Secure_stemarie', 'Partage', 'LSPQ_MiSeq', 'FinishedRunLog.log')
+            self.output = r"S:\Partage\LSPQ_MiSeq\FinishedRunLog.log"
+'''
+

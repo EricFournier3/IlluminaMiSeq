@@ -8,7 +8,7 @@ Eric Fournier 2019-07-31
 """
 
 #Pour debug
-debug_setting = {1: 'debug_inspq_6499', 2: 'debug_MiSeq', 3: 'none'}
+debug_setting = {1: 'debug_inspq_6499', 2: 'debug_miseq', 3: 'no_debug'}
 
 class PathSetter():
     """
@@ -36,9 +36,9 @@ class PathSetter():
         self.partage_lspq_miseq_root_dir = None
 
         if(self.debug_val == 'debug_inspq_6499'):
-            self.param_file = os.path.join('U:', 'TEMP', 'LSPQ_MiSeq', 'MiSeqRunTransferParam.yaml')
+            self.param_file = os.path.join('U:\\', 'TEMP', 'LSPQ_MiSeq', 'MiSeqRunTransferParam.yaml')
         else:
-            self.param_file = os.path.join('D:')
+            self.param_file = os.path.join('C:\\','ScriptParameterFiles','MiSeqRunTransferParam.yaml')
 
     def OpenParamFile(self):
         """
@@ -64,6 +64,7 @@ class PathSetter():
         self.all_dict = yaml.load(self.param_file_handle)
 
         #le path du fichier de loggin
+
         self.loggin_file = self.all_dict['loggin'][0][self.debug_val]
 
         #les path de la run sur le MiSeq
