@@ -15,19 +15,13 @@ Procedure pour compiler avec pyinstaller:
     1- Copier les scripts CheckFinishedMiSeqRun.py, Logger.py et ParameterHandler.py dans C:\Users\foueri01\Documents\PyinstallerCompilation
     2- aller dans C:\Users\foueri01\Documents\PyinstallerCompilation avec une console ligne de commande
     3- Executer la commande suivante
-            pyinstaller.exe --onefile --icon= CheckFinishedMiSeqRun.py
+            pyinstaller.exe --onefile --icon=watchdog.ico CheckFinishedMiSeqRun.py
     4- L executable CheckFinishedMiSeqRun.exe sera dans C:\Users\foueri01\Documents\PyinstallerCompilation\Dist
+    5-  Pour voir l executable avec le nouvel icone, il faut le copier dans un autre repertoire
             
 """
 
 #Choisir le niveau de debuggage
-
-#1 pour tester sur INSPQ-6499
-#2 pour tester sur le Miseq
-#3 pour production
-
-#my_debug_level = 1
-
 my_debug_level = int(raw_input("Enter un niveau de debugage:\n1 pour tester sur INSPQ-6499\n2 pour tester sur le Miseq\n3 pour production\n > "))
 
 class Watcher:
@@ -150,8 +144,6 @@ class Handler(FileSystemEventHandler):
                 self.path_setter = ParameterHandler.PathSetter(my_debug_level)
                 self.path_setter.OpenParamFile()
                 self.path_setter.ParseParamFile()
-
-
 
                 #path vers la run sur le MiSeq
                 runpath = os.path.dirname(event.src_path)

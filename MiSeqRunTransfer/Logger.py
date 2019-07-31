@@ -96,24 +96,5 @@ class FileTransferLogger:
         self.SetFileHandler()
         self.AddHandlerToLogger()
 
-'''
-    def SetOutput(self, output):
-        """
-        Path du FinishedRunLog.log selon le niveau de debuggage
-        :return:
-        """
 
-        self.output =
-        if (self.debug_val == 'debug_inspq_6499'):
-            #self.output = os.path.join('U:', 'TEMP', 'LSPQ_MiSeq', 'FinishedRunLog.log')
-            self.output = r"U:\TEMP\LSPQ_MiSeq\FinishedRunLog.log"
-        elif (self.debug_val == 'debug_miseq'):
-            #self.output = os.path.join('\\swsfi52p', 'Secure_stemarie', 'Partage', 'LSPQ_MiSeq', 'TEMP_TEST','FinishedRunLog.log')
-            #self.output = os.path.join('S:', 'Partage', 'LSPQ_MiSeq', 'TEMP_TEST','FinishedRunLog.log')
-            self.output = r"S:\Partage\LSPQ_MiSeq\TEMP_TEST\TEMP_TEST','FinishedRunLog.log"
-
-        else:
-            #self.output = os.path.join('\\swsfi52p', 'Secure_stemarie', 'Partage', 'LSPQ_MiSeq', 'FinishedRunLog.log')
-            self.output = r"S:\Partage\LSPQ_MiSeq\FinishedRunLog.log"
-'''
 
