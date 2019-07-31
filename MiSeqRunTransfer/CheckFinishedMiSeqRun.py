@@ -81,9 +81,23 @@ class Handler(FileSystemEventHandler):
         #Export du SampleSheet.csv
         shutil.copy(self.MiSeqRunObj.GetSampleSheetPath(),os.path.join(self.LspqMiSeqRunObj.GetExpPath(),self.LspqMiSeqRunObj.GetNewSampleSheetName()))
 
+    def ExportToLspqMiSeqMiSeqRunTrace(self):
+        """
+        Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\2_MiSeqRunTrace
+        :return:
+        """
+        # Export du RunInfo.xml
+        shutil.copy(self.MiSeqRunObj.GetRunInfoFilePath(), self.LspqMiSeqRunObj.GetMiseqRunTrace())
+
+        # Export du runParameters.xml
+        shutil.copy(self.MiSeqRunObj.GetRunParameterFilePath(), self.LspqMiSeqRunObj.GetMiseqRunTrace())
+
+        # Export du repertoire InterOp
+        shutil.copytree(self.MiSeqRunObj.GetInteropPath(),os.path.join(self.LspqMiSeqRunObj.GetMiseqRunTrace(), 'InterOp'))
+
     def ExportToLspqMiSeqSequenceBrute(self):
         '''
-        Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\2_SequencesBrutes
+        Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\3_SequencesBrutes
         :return:
         '''
 
@@ -96,19 +110,12 @@ class Handler(FileSystemEventHandler):
 
     def ExportToLspqMiSeqAnalyse(self):
         '''
-        Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\3_Analyse
+        Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\4_Analyse
 
         :return:
         '''
+        pass
 
-        #Export du RunInfo.xml
-        shutil.copy(self.MiSeqRunObj.GetRunInfoFilePath(),self.LspqMiSeqRunObj.GetAnalysePath())
-
-        #Export du runParameters.xml
-        shutil.copy(self.MiSeqRunObj.GetRunParameterFilePath(),self.LspqMiSeqRunObj.GetAnalysePath())
-
-        #Export du repertoire InterOp
-        shutil.copytree(self.MiSeqRunObj.GetInteropPath(),os.path.join(self.LspqMiSeqRunObj.GetAnalysePath(),'InterOp'))
 
     def SetNewRunName(self):
         '''
@@ -179,11 +186,10 @@ class Handler(FileSystemEventHandler):
                 #Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\1_Experimental
                 self.ExportToLspqMiSeqExperimental()
 
-                #Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\2_SequencesBrutes
-                self.ExportToLspqMiSeqSequenceBrute()
+                self.ExportToLspqMiSeqMiSeqRunTrace()
 
-                #Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\3_Analyse
-                self.ExportToLspqMiSeqAnalyse()
+                #Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\3_SequencesBrutes
+                self.ExportToLspqMiSeqSequenceBrute()
 
                 self.ftl.LogMessage("Export des fichiers du MiSeq run {0} vers {1} est termine\n ----------------------------------".format(runname, self.LspqMiSeqRunObj.GetRunPath()))
 
@@ -263,8 +269,9 @@ class RunOnPartageLspqMiSeq():
 
     def SetPath(self):
         self.experimental_path = os.path.join(self.runpath,'1_Experimental')
-        self.sequences_brutes_path = os.path.join(self.runpath,'2_SequencesBrutes')
-        self.analyse_path = os.path.join(self.runpath,'3_Analyse')
+        self.miseq_run_trace = os.path.join(self.runpath,'2_MiSeqRunTrace')
+        self.sequences_brutes_path = os.path.join(self.runpath,'3_SequencesBrutes')
+        self.analyse_path = os.path.join(self.runpath,'4_Analyse')
 
     def CreatePath(self):
         '''
@@ -278,10 +285,13 @@ class RunOnPartageLspqMiSeq():
         #Creation du sous repertoire 1_Experimental
         os.makedirs(self.experimental_path)
 
-        #Creation du sous repertoire 2_SequencesBrutes
+        #Creation du sous repertoire 2_MiSeqRunTrace
+        os.makedirs(self.miseq_run_trace)
+
+        #Creation du sous repertoire 3_SequencesBrutes
         os.makedirs(self.sequences_brutes_path)
 
-        #Creation du sous repertoire 3_Analyse
+        #Creation du sous repertoire 4_Analyse
         os.makedirs(self.analyse_path)
 
         #Creation des sous repertoires de project dans 3_Analyse
@@ -290,6 +300,9 @@ class RunOnPartageLspqMiSeq():
     #Getter des path
     def GetExpPath(self):
         return self.experimental_path
+
+    def GetMiseqRunTrace(self):
+        return self.miseq_run_trace
 
     def GetSeqBrutPath(self):
         return self.sequences_brutes_path
