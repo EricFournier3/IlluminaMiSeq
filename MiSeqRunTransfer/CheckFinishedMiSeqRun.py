@@ -280,10 +280,16 @@ class RunOnPartageLspqMiSeq():
         '''
 
         #Creation du repertoire racine
-        os.makedirs(self.runpath)
+        if os.path.isdir(self.runpath):
+            pass
+        else:
+            os.makedirs(self.runpath)
 
         #Creation du sous repertoire 1_Experimental
-        os.makedirs(self.experimental_path)
+        if os.path.isdir(self.experimental_path):
+            pass
+        else:
+            os.makedirs(self.experimental_path)
 
         #Creation du sous repertoire 2_MiSeqRunTrace
         os.makedirs(self.miseq_run_trace)

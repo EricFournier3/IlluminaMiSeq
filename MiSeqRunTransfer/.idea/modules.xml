@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://U:/TutorialTesting/Python/GENERAL_TEST/.idea/GENERAL_TEST.iml" filepath="U:/TutorialTesting/Python/GENERAL_TEST/.idea/GENERAL_TEST.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Jenkins.iml" filepath="$PROJECT_DIR$/.idea/Jenkins.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/MiSeqRunTransfer.iml" filepath="$PROJECT_DIR$/.idea/MiSeqRunTransfer.iml" />
     </modules>
