@@ -4,7 +4,7 @@ import os
 yaml.warnings({'YAMLLoadWarning': False})
 
 """
-Eric Fournier 2019-07-31
+Eric Fournier 2019-07-31 
 """
 
 #Pour debug
