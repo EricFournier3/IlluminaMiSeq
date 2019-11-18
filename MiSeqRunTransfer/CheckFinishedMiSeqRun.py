@@ -147,20 +147,24 @@ class Handler(FileSystemEventHandler):
 
         concat_file_handler = open(os.path.join(self.LspqMiSeqRunObj.GetExpPath(), concat_sample_sheet_name + '.csv'),'a')
 
-        line_nb = 0
+        data_header_readed = False #si le header de la section [Data] a ete lu
 
         #on copie les lignes du sample sheet vers le sample sheet concatene
         for line in open(sample_sheet_path):
-            line_nb += 1
 
             # si le sample sheet concatene est nouvellement cree, on copy egalement le header du sample sheet
             if not concat_sample_sheet_exist:
                 if re.search('Experiment Name', line):
                     concat_file_handler.write('Experiment Name,' + concat_sample_sheet_name + '\n')
                 else:
+                    line = re.sub(r',2,',',pulsenet,',line) # car le projet 2 correspond au projet salmonella pulse-net
                     concat_file_handler.write(line)
             # sinon on y copy uniquement les lignes correspondant aux samples
-            elif line_nb > 21:
+            elif re.search('Sample_ID', line):
+                data_header_readed = True
+
+            elif data_header_readed:
+                line = re.sub(r',2,', ',pulsenet,', line) # car le projet 2 correspond au projet salmonella pulse-net
                 concat_file_handler.write(line)
 
         concat_file_handler.write('\n')
