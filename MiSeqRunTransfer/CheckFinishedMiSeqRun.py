@@ -6,6 +6,7 @@ from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler, FileCreatedEvent
 import Logger
 import ParameterHandler
+import re
 
 """
 Eric Fournier 2019-07-30
@@ -87,13 +88,13 @@ class Handler(FileSystemEventHandler):
         :return:
         """
         # Export du RunInfo.xml
-        shutil.copy(self.MiSeqRunObj.GetRunInfoFilePath(), self.LspqMiSeqRunObj.GetMiseqRunTrace())
+        shutil.copy(self.MiSeqRunObj.GetRunInfoFilePath(), self.LspqMiSeqRunObj.GetMiseqRunTraceCartridge())
 
         # Export du runParameters.xml
-        shutil.copy(self.MiSeqRunObj.GetRunParameterFilePath(), self.LspqMiSeqRunObj.GetMiseqRunTrace())
+        shutil.copy(self.MiSeqRunObj.GetRunParameterFilePath(), self.LspqMiSeqRunObj.GetMiseqRunTraceCartridge())
 
         # Export du repertoire InterOp
-        shutil.copytree(self.MiSeqRunObj.GetInteropPath(),os.path.join(self.LspqMiSeqRunObj.GetMiseqRunTrace(), 'InterOp'))
+        shutil.copytree(self.MiSeqRunObj.GetInteropPath(),os.path.join(self.LspqMiSeqRunObj.GetMiseqRunTraceCartridge(), 'InterOp'))
 
     def ExportToLspqMiSeqSequenceBrute(self):
         '''
@@ -116,6 +117,54 @@ class Handler(FileSystemEventHandler):
         '''
         pass
 
+    def ConcatSampleSheet(self):
+        """
+        Concatenation des sample sheets
+        :return:
+        """
+
+        first_cartridge = False
+
+        sample_sheet_path=os.path.join(self.LspqMiSeqRunObj.GetExpPath(), self.LspqMiSeqRunObj.GetNewSampleSheetName())
+        #print sample_sheet_path #U:\TEMP\LSPQ_MiSeq\11111111_test1-test2\1_Experimental\11111111_test1-test2_C1.csv
+
+        # nom du sample sheet de cette cassette
+        sample_sheet_name = self.LspqMiSeqRunObj.GetNewSampleSheetName()[:-4]
+
+        # on extrait le nom de la run et celui de la cassette
+        search_obj = re.search(r'^(\S+_\S+)_(\S+)$', sample_sheet_name)
+        run_name = search_obj.group(1)
+        cartridge_name = search_obj.group(2)
+
+        # nom du sample sheet concatene sans l extension csv
+        concat_sample_sheet_name = run_name
+
+        concat_sample_sheet_exist = os.path.isfile(os.path.join(self.LspqMiSeqRunObj.GetExpPath(),concat_sample_sheet_name + '.csv'))
+
+        # on verifie si le sample sheet concat existe deja
+        if not concat_sample_sheet_exist:
+            first_cartridge = True
+
+        concat_file_handler = open(os.path.join(self.LspqMiSeqRunObj.GetExpPath(), concat_sample_sheet_name + '.csv'),'a')
+
+        line_nb = 0
+
+        #on copie les lignes du sample sheet vers le sample sheet concatene
+        for line in open(sample_sheet_path):
+            line_nb += 1
+
+            # si le sample sheet concatene est nouvellement cree, on copy egalement le header du sample sheet
+            if not concat_sample_sheet_exist:
+                if re.search('Experiment Name', line):
+                    concat_file_handler.write('Experiment Name,' + concat_sample_sheet_name + '\n')
+                else:
+                    concat_file_handler.write(line)
+            # sinon on y copy uniquement les lignes correspondant aux samples
+            elif line_nb > 21:
+                concat_file_handler.write(line)
+
+        concat_file_handler.write('\n')
+        concat_file_handler.close()
 
     def SetNewRunName(self):
         '''
@@ -123,6 +172,7 @@ class Handler(FileSystemEventHandler):
         :return:
         '''
         self.new_run_name = ""
+        self.cartridge_name = ""
 
         SampleSheetHandler = open(self.MiSeqRunObj.GetSampleSheetPath())
         SampleSheetHandler.readline()
@@ -134,6 +184,14 @@ class Handler(FileSystemEventHandler):
         self.new_run_name = self.new_run_name.split(',')
         #Le nouveau nom du projet
         self.new_run_name = self.new_run_name[1].strip()
+
+        search_obj = re.search(r'^(\S+_\S+)_(\S+)$',self.new_run_name)
+
+        if search_obj:
+            self.new_run_name = search_obj.group(1)
+            self.cartridge_name = search_obj.group(2)
+        else:
+            self.ftl.LogMessage("Nom de run inexistant")
 
         SampleSheetHandler.close()
 
@@ -171,7 +229,7 @@ class Handler(FileSystemEventHandler):
                 self.SetNewRunName()
 
                 #Un object structure du nouveau repertoire d analyse a cree sur S:\\Partage\LSPQ_MiSeq\
-                self.LspqMiSeqRunObj = RunOnPartageLspqMiSeq(self.new_run_name,self.path_setter.GetPartageLspqMiSeqRootDir())
+                self.LspqMiSeqRunObj = RunOnPartageLspqMiSeq(self.new_run_name,self.path_setter.GetPartageLspqMiSeqRootDir(),self.cartridge_name)
 
                 #Arborescence du repertoire d analyse a cree sur le S:\\Partage\LSPQ_MiSeq\
                 self.LspqMiSeqRunObj.SetPath()
@@ -185,6 +243,9 @@ class Handler(FileSystemEventHandler):
 
                 #Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\1_Experimental
                 self.ExportToLspqMiSeqExperimental()
+
+                #Concatener les sample sheet
+                self.ConcatSampleSheet()
 
                 self.ExportToLspqMiSeqMiSeqRunTrace()
 
@@ -250,10 +311,13 @@ class RunOnPartageLspqMiSeq():
     Structure du nouveau repertoire d analyse sur  terminee sur S:\\Partage\LSPQ_MiSeq\
     """
 
-    def __init__(self,RunName,basedir):
+    def __init__(self,RunName,basedir,CartridgeName):
 
         #Nom de la run
         self.runname = RunName
+
+        #Nom de la cartouche
+        self.cartridgename = CartridgeName
 
         #S:\\Partage\LSPQ_MiSeq\
         self.basedir = basedir
@@ -270,6 +334,7 @@ class RunOnPartageLspqMiSeq():
     def SetPath(self):
         self.experimental_path = os.path.join(self.runpath,'1_Experimental')
         self.miseq_run_trace = os.path.join(self.runpath,'2_MiSeqRunTrace')
+        self.miseq_run_trace_cartridge = os.path.join(self.miseq_run_trace,self.cartridgename)
         self.sequences_brutes_path = os.path.join(self.runpath,'3_SequencesBrutes')
         self.analyse_path = os.path.join(self.runpath,'4_Analyse')
 
@@ -292,16 +357,26 @@ class RunOnPartageLspqMiSeq():
             os.makedirs(self.experimental_path)
 
         #Creation du sous repertoire 2_MiSeqRunTrace
-        os.makedirs(self.miseq_run_trace)
+        if os.path.isdir(self.miseq_run_trace):
+            pass
+            os.makedirs(self.miseq_run_trace_cartridge)
+        else:
+            os.makedirs(self.miseq_run_trace)
+            os.makedirs(self.miseq_run_trace_cartridge)
 
         #Creation du sous repertoire 3_SequencesBrutes
-        os.makedirs(self.sequences_brutes_path)
+        if os.path.isdir(self.sequences_brutes_path):
+            pass
+        else:
+            os.makedirs(self.sequences_brutes_path)
 
         #Creation du sous repertoire 4_Analyse
-        os.makedirs(self.analyse_path)
-
-        #Creation des sous repertoires de project dans 3_Analyse
-        self.CreateProjectSubDir()
+        if os.path.isdir(self.analyse_path):
+            pass
+        else:
+            os.makedirs(self.analyse_path)
+            #Creation des sous repertoires de project dans 4_Analyse
+            self.CreateProjectSubDir()
 
     #Getter des path
     def GetExpPath(self):
@@ -309,6 +384,9 @@ class RunOnPartageLspqMiSeq():
 
     def GetMiseqRunTrace(self):
         return self.miseq_run_trace
+
+    def GetMiseqRunTraceCartridge(self):
+        return self.miseq_run_trace_cartridge
 
     def GetSeqBrutPath(self):
         return self.sequences_brutes_path
@@ -344,7 +422,7 @@ class RunOnPartageLspqMiSeq():
         Setting du nouveau nom de la SampleSheet.csv a partir du nom de la run
         :return:
         '''
-        self.SampleSheetName = self.runname + ".csv"
+        self.SampleSheetName = self.runname + '_' + self.cartridgename +".csv"
 
 if __name__ == '__main__':
     w = Watcher()
