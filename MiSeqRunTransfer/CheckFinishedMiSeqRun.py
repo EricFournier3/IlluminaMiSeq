@@ -179,15 +179,12 @@ class Handler(FileSystemEventHandler):
         self.cartridge_name = ""
 
         SampleSheetHandler = open(self.MiSeqRunObj.GetSampleSheetPath())
-        SampleSheetHandler.readline()
-        SampleSheetHandler.readline()
-        SampleSheetHandler.readline()
 
-        #La quatrieme ligne du SampleSheet a le format suivant 'Experiment Name,Date_Projet1-Projet2'
-        self.new_run_name = SampleSheetHandler.readline()
-        self.new_run_name = self.new_run_name.split(',')
-        #Le nouveau nom du projet
-        self.new_run_name = self.new_run_name[1].strip()
+        for line in SampleSheetHandler:
+            # print line
+            if re.search(r'Experiment Name', line):
+                self.new_run_name = line.split(',')
+                self.new_run_name = self.new_run_name[1].strip()
 
         search_obj = re.search(r'^(\S+_\S+)_(\S+)$',self.new_run_name)
 
