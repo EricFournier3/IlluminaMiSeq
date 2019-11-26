@@ -12,3 +12,9 @@ runs_on_partage_lspq_miseq:
  - debug_inspq_6499: U:\TEMP\LSPQ_MiSeq
    debug_miseq: S:\TEMP_TEST
    no_debug: S:\
+irida_uploader_info:
+ - debug_inspq_6499: U:\TEMP\LSPQ_MiSeq\.miseqUploaderInfo
+   debug_miseq: S:\TEMP_TEST\.miseqUploaderInfo
+   no_debug: S:\.miseqUploaderInfo
+   
+   
