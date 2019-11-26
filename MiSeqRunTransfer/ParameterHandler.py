@@ -73,6 +73,8 @@ class PathSetter():
         #les path de la run dans S:\Partage\LSPQ_MiSeq
         self.partage_lspq_miseq_root_dir = self.all_dict['runs_on_partage_lspq_miseq'][0][self.debug_val]
 
+        self.irida_uploader_info = self.all_dict['irida_uploader_info'][0][self.debug_val]
+
     #Les getter
     def GetLogginFile(self):
         return self.loggin_file
@@ -82,4 +84,7 @@ class PathSetter():
 
     def GetPartageLspqMiSeqRootDir(self):
         return self.partage_lspq_miseq_root_dir
+
+    def GetIridaUploaderInfoFile(self):
+        return  self.irida_uploader_info
 

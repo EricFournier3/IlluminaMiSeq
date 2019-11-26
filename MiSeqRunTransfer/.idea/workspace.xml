@@ -18,8 +18,8 @@
       <file leaf-file-name="test1.py" pinned="false" current-in-tab="false">
         <entry file="file://U:/TutorialTesting/Python/GENERAL_TEST/test1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="16" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="16" selection-end-column="26" />
+            <state relative-caret-position="136">
+              <caret line="8" column="61" lean-forward="true" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -30,8 +30,8 @@
       <file leaf-file-name="CheckFinishedMiSeqRun.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CheckFinishedMiSeqRun.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="178" column="32" lean-forward="true" selection-start-line="178" selection-start-column="32" selection-end-line="178" selection-end-column="32" />
+            <state relative-caret-position="166">
+              <caret line="273" column="54" lean-forward="true" selection-start-line="273" selection-start-column="54" selection-end-line="273" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -50,8 +50,8 @@
       <file leaf-file-name="ParameterHandler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ParameterHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+            <state relative-caret-position="493">
+              <caret line="84" column="31" lean-forward="true" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -61,14 +61,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Message</find>
-      <find>FillGroupDict</find>
-      <find>self.groupExist</find>
-      <find>CreateGroupF</find>
-      <find>CreateGroupF_CDSLSPQ2331</find>
-      <find>CDSLSPQ-2331</find>
-      <find>Debug</find>
-      <find>dGenes</find>
       <find>printBlastReport</find>
       <find>Choisir au</find>
       <find>Ã©</find>
@@ -91,6 +83,14 @@
       <find>launchAnalysisF</find>
       <find>manageTreeF</find>
       <find>pulse</find>
+      <find>SampleSheet</find>
+      <find>self.sampleSheet_file_path</find>
+      <find>GetSampleSheetPath</find>
+      <find>ExportToLspqMiSeqExperimental</find>
+      <find>RunOnMiSeq</find>
+      <find>CreateIridaSampleSheet</find>
+      <find>CheckIfIridaSamplesInRun</find>
+      <find>ImportIridaUploaderInfoFile</find>
     </findStrings>
     <replaceStrings>
       <replace>st_ref_dict</replace>
@@ -99,7 +99,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/ParameterHandler.py" />
         <option value="$PROJECT_DIR$/Logger.py" />
         <option value="$USER_HOME$/PycharmProjects/MyProject/test.py" />
         <option value="U:/PROJETS/DT1/C2/CDSLSPQ_2069/IdbmPhylo_CDSLSPQ_2069.py" />
@@ -126,6 +125,7 @@
         <option value="U:/PROJETS/DT1/C2/CDSLSPQ-2351/Suite_20191114/ACCESSIONS_COMPLETE_GENOMES/NCBIdownloadGB.py" />
         <option value="U:/PROJETS/DT1/C2/CDSLSPQ-2351/Suite_20191114/ViroPhylo_test_CDSLSPQ2351.py" />
         <option value="U:/TutorialTesting/Python/GENERAL_TEST/test1.py" />
+        <option value="$PROJECT_DIR$/ParameterHandler.py" />
         <option value="$PROJECT_DIR$/CheckFinishedMiSeqRun.py" />
       </list>
     </option>
@@ -596,6 +596,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://U:/TutorialTesting/Python/GENERAL_TEST/test1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="61" lean-forward="true" selection-start-line="8" selection-start-column="61" selection-end-line="8" selection-end-column="61" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Logger.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1649">
@@ -606,26 +616,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ParameterHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+        <state relative-caret-position="493">
+          <caret line="84" column="31" lean-forward="true" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="34" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/TutorialTesting/Python/GENERAL_TEST/test1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="16" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="16" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CheckFinishedMiSeqRun.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="178" column="32" lean-forward="true" selection-start-line="178" selection-start-column="32" selection-end-line="178" selection-end-column="32" />
+        <state relative-caret-position="166">
+          <caret line="273" column="54" lean-forward="true" selection-start-line="273" selection-start-column="54" selection-end-line="273" selection-end-column="54" />
           <folding />
         </state>
       </provider>

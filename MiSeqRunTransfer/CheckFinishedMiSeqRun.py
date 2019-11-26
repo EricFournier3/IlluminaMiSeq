@@ -72,6 +72,7 @@ class Handler(FileSystemEventHandler):
 
     def __init__(self,logfile):
         self.ftl = Logger.FileTransferLogger(os.path.basename(__file__),logfile)
+        self.irida_samples_in_run = False
 
     def ExportToLspqMiSeqExperimental(self):
         '''
@@ -116,6 +117,28 @@ class Handler(FileSystemEventHandler):
         :return:
         '''
         pass
+
+    def CreateIridaSampleSheet(self):
+        """
+        On cree dans le repertoire racine de la run sur le MiSeq, un
+        SampleSheet.csv qui contient seulement des specimens irida
+        :return:
+        """
+        self.MiSeqRunObj.CreateIridaSampleSheet()
+
+    def CheckIfIridaSamplesInRun(self):
+        if re.search('pulsenet',self.new_run_name):
+            return True
+
+        return False
+
+    def ImportIridaUploaderInfoFile(self):
+        """
+        Fichier .miseqUploaderInfo avec status a Complete pour ne pas que le irida scan cette run
+        :return:
+        """
+
+        shutil.copy(self.path_setter.GetIridaUploaderInfoFile(),self.MiSeqRunObj.GetRunPath())
 
     def ConcatSampleSheet(self):
         """
@@ -245,6 +268,11 @@ class Handler(FileSystemEventHandler):
                 #Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\1_Experimental
                 self.ExportToLspqMiSeqExperimental()
 
+                if self.CheckIfIridaSamplesInRun():
+                    self.CreateIridaSampleSheet()
+                else:
+                    self.ImportIridaUploaderInfoFile()
+
                 #Concatener les sample sheet
                 self.ConcatSampleSheet()
 
@@ -269,6 +297,35 @@ class RunOnMiSeq():
     def __init__(self,RunPath):
         pass
         self.runpath = RunPath
+        self.irida_samples_in_run = False
+
+    def GetRunPath(self):
+        return  self.runpath
+
+    def CreateIridaSampleSheet(self):
+        """
+        Creer une sample sheet contenant seulement les samples a transferer sur irida
+        :return:
+        """
+
+        shutil.move(self.sampleSheet_file_path,os.path.join(self.runpath,'SampleSheet_original.csv'))
+
+        with open(self.sampleSheet_file_path,'w') as sheet:
+            with open(os.path.join(self.runpath,'SampleSheet_original.csv')) as sheet_ori:
+                sample_header_read = False
+                for line in sheet_ori:
+                    if re.search(r'Sample_ID', line):
+                        sample_header_read = True
+
+                    if not sample_header_read:
+                        sheet.write(line)
+
+                    elif re.search(r'Sample_ID',line):
+                        sheet.write(line)
+
+                    else:
+                        if re.search(r'^.*,.*,.*,.*,.*,.*,.*,.*,2,',line):
+                            sheet.write(line)
 
     def SetPath(self):
         '''
