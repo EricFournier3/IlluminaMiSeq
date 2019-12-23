@@ -1,20 +1,24 @@
 #Eric Fournier 2019-07-30
 
 loggin:
- - debug_inspq_6499: U:\TEMP\LSPQ_MiSeq\FinishedRunLog.log
-   debug_miseq: S:\TEMP_TEST\FinishedRunLog.log
-   no_debug: S:\FinishedRunLog.log
+ - debug_inspq_6499_I: C:\WatchDogFiles\FinishedRunLog_I.log
+   debug_inspq_6499_J: C:\WatchDogFiles\FinishedRunLog_J.log
+   no_debug_inspq_8719: C:\WatchDogFiles\FinishedRunLog_inspq_8719.log
+   no_debug_inspq_8900: C:\WatchDogFiles\FinishedRunLog_inspq_8900.log
 runs_on_miseq:
- - debug_inspq_6499: U:\TEMP\MiSeqOutput
-   debug_miseq: D:\TESTING\MiSeqOutput
-   no_debug: D:\Illumina\MiSeqOutput
+ - debug_inspq_6499_I: U:\TEMP\ILLUMINA_I\Illumina\MiSeqOutput
+   debug_inspq_6499_J: U:\TEMP\ILLUMINA_J\Illumina\MiSeqOutput
+   no_debug_inspq_8719: J:\Illumina\MiSeqOutput
+   no_debug_inspq_8900: I:\Illumina\MiSeqOutput
 runs_on_partage_lspq_miseq:
- - debug_inspq_6499: U:\TEMP\LSPQ_MiSeq
-   debug_miseq: S:\TEMP_TEST
-   no_debug: S:\
+ - debug_inspq_6499_I: U:\TEMP\LSPQ_MiSeq
+   debug_inspq_6499_J: U:\TEMP\LSPQ_MiSeq
+   no_debug_inspq_8719: S:\
+   no_debug_inspq_8900: S:\
 irida_uploader_info:
- - debug_inspq_6499: U:\TEMP\LSPQ_MiSeq\.miseqUploaderInfo
-   debug_miseq: S:\TEMP_TEST\.miseqUploaderInfo
-   no_debug: S:\.miseqUploaderInfo
+ - debug_inspq_6499_I: C:\WatchDogFiles\.miseqUploaderInfo
+   debug_inspq_6499_J: C:\WatchDogFiles\.miseqUploaderInfo
+   no_debug_inspq_8719: C:\WatchDogFiles\.miseqUploaderInfo
+   no_debug_inspq_8900: C:\WatchDogFiles\.miseqUploaderInfo
    
    

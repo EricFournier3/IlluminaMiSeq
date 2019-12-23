@@ -23,7 +23,24 @@ Procedure pour compiler avec pyinstaller:
 """
 
 #Choisir le niveau de debuggage
-my_debug_level = int(raw_input("Enter un niveau de debugage:\n1 pour tester sur INSPQ-6499\n2 pour tester sur le Miseq\n3 pour production\n > "))
+my_debug_level = int(raw_input("Enter un niveau de debugage:\n1 pour tester sur INSPQ-6499 disque I\n2 pour tester sur INSPQ-6499 disque J\n3 pour production sur INSPQ-8719\n4 pour production sur INSPQ-8900\n > "))
+
+if (my_debug_level == 1):
+    print "INSPQ-6499 disque I"
+
+elif (my_debug_level == 2):
+    print "INSPQ-6499 disque J"
+
+elif (my_debug_level == 3):
+    print "pour production sur INSPQ-8719"
+
+elif(my_debug_level == 4):
+    print "pour production sur INSPQ-8900"
+
+else:
+    print "Choix invalide"
+    exit()
+
 
 class Watcher:
     """

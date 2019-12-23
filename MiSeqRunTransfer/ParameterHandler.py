@@ -7,8 +7,7 @@ yaml.warnings({'YAMLLoadWarning': False})
 Eric Fournier 2019-07-31
 """
 
-#Pour debug
-debug_setting = {1: 'debug_inspq_6499', 2: 'debug_miseq', 3: 'no_debug'}
+debug_setting = {1: 'debug_inspq_6499_I', 2: 'debug_inspq_6499_J', 3: 'no_debug_inspq_8719', 4: 'no_debug_inspq_8900'}
 
 class PathSetter():
     """
@@ -35,10 +34,8 @@ class PathSetter():
         #pour les path de la run dans S:\Partage\LSPQ_MiSeq
         self.partage_lspq_miseq_root_dir = None
 
-        if(self.debug_val == 'debug_inspq_6499'):
-            self.param_file = os.path.join('U:\\', 'TEMP', 'LSPQ_MiSeq', 'MiSeqRunTransferParam.yaml')
-        else:
-            self.param_file = os.path.join('C:\\','ScriptParameterFiles','MiSeqRunTransferParam.yaml')
+        self.param_file = os.path.join('C:\\', 'WatchDogFiles', 'MiSeqRunTransferParam.yaml')
+
 
     def OpenParamFile(self):
         """
@@ -70,9 +67,12 @@ class PathSetter():
         #les path de la run sur le MiSeq
         self.miseq_root_dir = self.all_dict['runs_on_miseq'][0][self.debug_val]
 
+        #print " miseq_root_dir " + self.miseq_root_dir
+
         #les path de la run dans S:\Partage\LSPQ_MiSeq
         self.partage_lspq_miseq_root_dir = self.all_dict['runs_on_partage_lspq_miseq'][0][self.debug_val]
 
+        #path vers le .miseqUploaderInfo
         self.irida_uploader_info = self.all_dict['irida_uploader_info'][0][self.debug_val]
 
     #Les getter
