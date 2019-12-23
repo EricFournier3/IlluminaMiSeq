@@ -26,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckFinishedMiSeqRun.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CheckFinishedMiSeqRun.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CheckFinishedMiSeqRun.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="20" column="95" lean-forward="true" selection-start-line="20" selection-start-column="95" selection-end-line="20" selection-end-column="95" />
+            <state relative-caret-position="85">
+              <caret line="12" column="84" lean-forward="true" selection-start-line="12" selection-start-column="84" selection-end-line="12" selection-end-column="84" />
               <folding />
             </state>
           </provider>
@@ -49,18 +49,18 @@
       <file leaf-file-name="ParameterHandler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ParameterHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="6" column="15" lean-forward="false" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+            <state relative-caret-position="200">
+              <caret line="72" column="105" lean-forward="true" selection-start-line="72" selection-start-column="105" selection-end-line="72" selection-end-column="105" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MiSeqRunTransferParam.yaml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MiSeqRunTransferParam.yaml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../MiSeqRunTransferParam.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="22" />
+            <state relative-caret-position="170">
+              <caret line="10" column="47" lean-forward="true" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -80,9 +80,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>ImportIridaUploaderInfoFile</find>
-      <find>PULSENET</find>
-      <find>CheckIfIridaSamplesInRun</find>
       <find>SearchTreePath</find>
       <find>HBV</find>
       <find>specdir_5NCR</find>
@@ -110,6 +107,9 @@
       <find>debug_inspq_6499</find>
       <find>debug_setting</find>
       <find>2_</find>
+      <find>partage_lspq_miseq_root_dir</find>
+      <find>runs_on_partage_lspq_miseq</find>
+      <find>GetPartageLspqMiSeqRootDir</find>
     </findStrings>
     <replaceStrings>
       <replace>st_ref_dict</replace>
@@ -150,9 +150,9 @@
         <option value="U:/TutorialTesting/Python/GENERAL_TEST/test1.py" />
         <option value="U:/PROJETS/DT1/C2/CDSLSPQ-2351/Suite_20191114/Suite_20191204/HCVAssemblyTemplate_CDSLSPQ2351.py" />
         <option value="U:/PROJETS/DT1/C2/CDSLSPQ-2351/Suite_20191114/Suite_20191204/ViroPhylo_test_CDSLSPQ2351.py" />
-        <option value="$PROJECT_DIR$/../MiSeqRunTransferParam.yaml" />
         <option value="$PROJECT_DIR$/ParameterHandler.py" />
         <option value="$PROJECT_DIR$/CheckFinishedMiSeqRun.py" />
+        <option value="$PROJECT_DIR$/../MiSeqRunTransferParam.yaml" />
       </list>
     </option>
   </component>
@@ -655,26 +655,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../MiSeqRunTransferParam.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ParameterHandler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="15" lean-forward="false" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        <state relative-caret-position="200">
+          <caret line="72" column="105" lean-forward="true" selection-start-line="72" selection-start-column="105" selection-end-line="72" selection-end-column="105" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CheckFinishedMiSeqRun.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="20" column="95" lean-forward="true" selection-start-line="20" selection-start-column="95" selection-end-line="20" selection-end-column="95" />
+        <state relative-caret-position="85">
+          <caret line="12" column="84" lean-forward="true" selection-start-line="12" selection-start-column="84" selection-end-line="12" selection-end-column="84" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../MiSeqRunTransferParam.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="47" lean-forward="true" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
           <folding />
         </state>
       </provider>

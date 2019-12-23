@@ -11,10 +11,10 @@ runs_on_miseq:
    no_debug_inspq_8719: J:\Illumina\MiSeqOutput
    no_debug_inspq_8900: I:\Illumina\MiSeqOutput
 runs_on_partage_lspq_miseq:
- - debug_inspq_6499_I: U:\TEMP\LSPQ_MiSeq
-   debug_inspq_6499_J: U:\TEMP\LSPQ_MiSeq
-   no_debug_inspq_8719: S:\
-   no_debug_inspq_8900: S:\
+ - debug_inspq_6499_I: U:\TEMP\LSPQ_MiSeq\
+   debug_inspq_6499_J: U:\TEMP\LSPQ_MiSeq\
+   no_debug_inspq_8719: S:\Partage\LSPQ_MiSeq\
+   no_debug_inspq_8900: S:\Partage\LSPQ_MiSeq\
 irida_uploader_info:
  - debug_inspq_6499_I: C:\WatchDogFiles\.miseqUploaderInfo
    debug_inspq_6499_J: C:\WatchDogFiles\.miseqUploaderInfo
