@@ -20,5 +20,10 @@ irida_uploader_info:
    debug_inspq_6499_J: C:\WatchDogFiles\.miseqUploaderInfo
    no_debug_inspq_8719: C:\WatchDogFiles\.miseqUploaderInfo
    no_debug_inspq_8900: C:\WatchDogFiles\.miseqUploaderInfo
+backup_disk:
+ - debug_inspq_6499_I: U:\TEMP\BackUp_I
+   debug_inspq_6499_J: U:\TEMP\BackUp_J
+   no_debug_inspq_8719: D:\8719
+   no_debug_inspq_8900: D:\8900
    
    

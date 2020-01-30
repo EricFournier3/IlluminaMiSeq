@@ -22,6 +22,15 @@ Procedure pour compiler avec pyinstaller:
             
 """
 
+"""
+Liste des modifications
+
+- Modif_20200130 : 2020-01-30 Eric Fournier 
+        > Backup de la run MiSeq
+        > Les runs sur LSPQ_MiSeq sont maintenant classees par annee
+
+"""
+
 #Choisir le niveau de debuggage
 my_debug_level = int(raw_input("Enter un niveau de debugage:\n1 pour tester sur INSPQ-6499 disque I\n2 pour tester sur INSPQ-6499 disque J\n3 pour production sur INSPQ-8719\n4 pour production sur INSPQ-8900\n > "))
 
@@ -127,6 +136,17 @@ class Handler(FileSystemEventHandler):
                 fastq_to = self.LspqMiSeqRunObj.GetSeqBrutPath()
                 shutil.copy(fastq_from,fastq_to)
 
+    def BackupMiSeqRun(self):
+        '''
+        Modif_20200130
+
+        Sauvegarde de la run MiSeq
+
+        :return:
+        '''
+
+        self.RunBackuperObj.LauchRunBackup()
+
     def ExportToLspqMiSeqAnalyse(self):
         '''
         Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\4_Analyse
@@ -156,6 +176,7 @@ class Handler(FileSystemEventHandler):
         """
 
         shutil.copy(self.path_setter.GetIridaUploaderInfoFile(),self.MiSeqRunObj.GetRunPath())
+
 
     def ConcatSampleSheet(self):
         """
@@ -236,6 +257,7 @@ class Handler(FileSystemEventHandler):
 
         SampleSheetHandler.close()
 
+
     def on_created(self, event):
         '''
         Execute lorsque le watchdog a detecter qu une run MiSeq est terminee
@@ -259,6 +281,10 @@ class Handler(FileSystemEventHandler):
 
                 #Un object structure de la run terminee sur le MiSeq
                 self.MiSeqRunObj = RunOnMiSeq(runpath)
+
+                #Modif_20200130
+                #Object permettant la copie de run sur le disque 8T
+                self.RunBackuperObj = RunBackuper(runpath,self.path_setter.GetBackupDiskDir())
 
                 # Message affichee dans la console
                 self.ftl.LogMessage("La run {0} est termine".format(runname))
@@ -286,9 +312,11 @@ class Handler(FileSystemEventHandler):
                 self.ExportToLspqMiSeqExperimental()
 
                 if self.CheckIfIridaSamplesInRun():
+
                     self.CreateIridaSampleSheet()
                 else:
                     self.ImportIridaUploaderInfoFile()
+
 
                 #Concatener les sample sheet
                 self.ConcatSampleSheet()
@@ -298,7 +326,12 @@ class Handler(FileSystemEventHandler):
                 #Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\3_SequencesBrutes
                 self.ExportToLspqMiSeqSequenceBrute()
 
-                self.ftl.LogMessage("Export des fichiers du MiSeq run {0} vers {1} est termine\n ----------------------------------".format(runname, self.LspqMiSeqRunObj.GetRunPath()))
+                self.ftl.LogMessage("Export des fichiers du MiSeq run {0} vers {1} est termine".format(runname, self.LspqMiSeqRunObj.GetRunPath()))
+
+                # Modif_20200130
+                self.ftl.LogMessage("Debut Backup run {0}".format(runname))
+                self.BackupMiSeqRun()
+                self.ftl.LogMessage("Fin Backup run {0}\n ----------------------------------".format(runname))
 
                 self.path_setter.CloseParamFile()
 
@@ -381,6 +414,21 @@ class RunOnMiSeq():
     def GetSampleSheetPath(self):
         return self.sampleSheet_file_path
 
+class RunBackuper():
+    """
+    Modif_20200130
+    Pour le backup des runs sur le disque 8T
+    """
+    def __init__(self,run_path,backup_disk_path):
+        pass
+        self.runPath = run_path
+        self.BackupDiskPath = backup_disk_path
+
+    def LauchRunBackup(self):
+        src = re.sub('MiSeqOutput','MiSeqAnalysis',self.runPath)
+        dest = os.path.join(self.BackupDiskPath,os.path.basename(self.runPath))
+        shutil.copytree(src, dest)
+
 class RunOnPartageLspqMiSeq():
     """
     Structure du nouveau repertoire d analyse sur  terminee sur S:\\Partage\LSPQ_MiSeq\
@@ -397,8 +445,11 @@ class RunOnPartageLspqMiSeq():
         #S:\\Partage\LSPQ_MiSeq\
         self.basedir = basedir
 
+
         #path vers le nouveau repertoire d analyse sur S:\\Partage\LSPQ_MiSeq\
-        self.runpath = os.path.join(self.basedir,self.runname)
+        #Modif_20200130 ajout de l annee
+        self.runpath = os.path.join(self.basedir,self.runname[0:4],self.runname)
+
 
         #nouveau nom de la SampleSheet.csv a definir
         self.SampleSheetName = ""

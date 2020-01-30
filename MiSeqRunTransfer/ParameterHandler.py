@@ -75,6 +75,10 @@ class PathSetter():
         #path vers le .miseqUploaderInfo
         self.irida_uploader_info = self.all_dict['irida_uploader_info'][0][self.debug_val]
 
+        #Modif_20200130
+        #path vers le disque 8T de sauvegarde des runs
+        self.backup_disk_dir = self.all_dict['backup_disk'][0][self.debug_val]
+
     #Les getter
     def GetLogginFile(self):
         return self.loggin_file
@@ -87,4 +91,11 @@ class PathSetter():
 
     def GetIridaUploaderInfoFile(self):
         return  self.irida_uploader_info
+
+    def GetBackupDiskDir(self):
+        """
+        Modif_20200130
+        :return:
+        """
+        return self.backup_disk_dir
 
