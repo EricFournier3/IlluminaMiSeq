@@ -9,6 +9,40 @@ Eric Fournier 2019-07-31
 
 debug_setting = {1: 'debug_inspq_6499_I', 2: 'debug_inspq_6499_J', 3: 'no_debug_inspq_8719', 4: 'no_debug_inspq_8900'}
 
+class FileSizeManager():
+    """
+    #Modif_20200211
+    Lecteur de taille de fichiers
+
+    """
+
+    def __init__(self,debug_level):
+        self.debug_val = debug_setting[debug_level]
+        self.param_file = os.path.join('C:\\', 'WatchDogFiles', 'MiSeqRunTransferParam.yaml')
+
+    def OpenParamFile(self):
+        """
+        Ouverture du fichier de parametres
+        :return:
+        """
+        self.param_file_handle = open(self.param_file)
+
+    def CloseParamFile(self):
+        """
+        Fermeture du fichier de parametres
+        :return:
+        """
+        self.param_file_handle.close()
+
+    def ParseParamFile(self):
+        self.all_dict = yaml.load(self.param_file_handle)
+
+        self.min_fastq_size = self.all_dict['min_fastq_size'][0][self.debug_val]
+
+    def GetMinFastqSize(self):
+        return self.min_fastq_size
+
+
 class PathSetter():
     """
     Gere les chemins d acces definis dans le fichier de parametres MiSeqRunTransferParam.yaml
@@ -79,6 +113,8 @@ class PathSetter():
         #path vers le disque 8T de sauvegarde des runs
         self.backup_disk_dir = self.all_dict['backup_disk'][0][self.debug_val]
 
+
+
     #Les getter
     def GetLogginFile(self):
         return self.loggin_file
@@ -98,4 +134,5 @@ class PathSetter():
         :return:
         """
         return self.backup_disk_dir
+
 

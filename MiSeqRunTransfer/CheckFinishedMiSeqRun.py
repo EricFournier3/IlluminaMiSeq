@@ -28,6 +28,12 @@ Liste des modifications
 - Modif_20200130 : 2020-01-30 Eric Fournier 
         > Backup de la run MiSeq
         > Les runs sur LSPQ_MiSeq sont maintenant classees par annee
+        
+- Modif_20200211: 2020-02-11 Eric Fournier
+    > Quelques ajustements pour la creation de la sample sheet irida
+    > Creation Manuel du fichier .miseqUploaderInfo
+    > Ne plus copier automatiquement les SampleSheet de cassette dans LSPQ_MiSeq
+    > Ne plus tenter d envoyer sur Irida les fastq trop petit => creer fichier SamplesTransfered et SampleNotTransfered
 
 """
 
@@ -107,7 +113,10 @@ class Handler(FileSystemEventHandler):
         '''
 
         #Export du SampleSheet.csv
-        shutil.copy(self.MiSeqRunObj.GetSampleSheetPath(),os.path.join(self.LspqMiSeqRunObj.GetExpPath(),self.LspqMiSeqRunObj.GetNewSampleSheetName()))
+        #Modif_20200211
+        if not os.path.exists(os.path.join(self.LspqMiSeqRunObj.GetExpPath(),self.LspqMiSeqRunObj.GetNewSampleSheetName())):
+            shutil.copy(self.MiSeqRunObj.GetSampleSheetPath(),os.path.join(self.LspqMiSeqRunObj.GetExpPath(),self.LspqMiSeqRunObj.GetNewSampleSheetName()))
+
 
     def ExportToLspqMiSeqMiSeqRunTrace(self):
         """
@@ -129,12 +138,47 @@ class Handler(FileSystemEventHandler):
         :return:
         '''
 
+
+
         #Export des fastq.gz
         for  fastq in os.listdir(self.MiSeqRunObj.GetBaseCallPath()):
             if(str(fastq).endswith('.fastq.gz')):
+
                 fastq_from = os.path.join(self.MiSeqRunObj.GetBaseCallPath(),fastq)
                 fastq_to = self.LspqMiSeqRunObj.GetSeqBrutPath()
                 shutil.copy(fastq_from,fastq_to)
+
+    def BuildGoodAndBadFastqList(self,min_fastq_size):
+        #Modif_20200211
+        pass
+        #liste specimen ok => on enregistre dans fichier
+        #liste specime non ok => on enregistre
+        #envoye par email a sadjia
+
+        good_spec_list = []
+        bad_spec_list = []
+
+        for fastq in os.listdir(self.MiSeqRunObj.GetBaseCallPath()):
+            if (str(fastq).endswith('.fastq.gz')):
+
+                spec_name = fastq.split('_')[0]
+                if(os.stat(os.path.join(self.MiSeqRunObj.GetBaseCallPath(),fastq)).st_size > min_fastq_size):
+
+                    good_spec_list.append(spec_name)
+                else:
+                    bad_spec_list.append(spec_name)
+
+        good_spec_set = set(good_spec_list)
+        bad_spec_set = set(bad_spec_list)
+
+        good_spec_list = list(good_spec_set - bad_spec_set)
+        bad_spec_list = list(bad_spec_set)
+
+        spec_dir = {'good':good_spec_list, 'bad':bad_spec_list}
+
+        return spec_dir
+
+
 
     def BackupMiSeqRun(self):
         '''
@@ -155,13 +199,18 @@ class Handler(FileSystemEventHandler):
         '''
         pass
 
-    def CreateIridaSampleSheet(self):
+    def CreateIridaSampleSheet(self,file_size_manager):
         """
         On cree dans le repertoire racine de la run sur le MiSeq, un
         SampleSheet.csv qui contient seulement des specimens irida
         :return:
         """
-        self.MiSeqRunObj.CreateIridaSampleSheet()
+
+        # APPELE UNE FONCTION QUI S ASSURE QUE LA R1 > file_size_manager.GetMinFastqSize() ET QUE LA R2 > file_size_manager.GetMinFastqSize()
+        # Modif_20200211
+        good_and_bad_spec_dir = self.BuildGoodAndBadFastqList(file_size_manager.GetMinFastqSize())
+
+        self.MiSeqRunObj.CreateIridaSampleSheet(good_and_bad_spec_dir)
 
     def CheckIfIridaSamplesInRun(self):
         if re.search('pulsenet',self.new_run_name):
@@ -175,8 +224,11 @@ class Handler(FileSystemEventHandler):
         :return:
         """
 
-        shutil.copy(self.path_setter.GetIridaUploaderInfoFile(),self.MiSeqRunObj.GetRunPath())
+        #shutil.copy(self.path_setter.GetIridaUploaderInfoFile(),self.MiSeqRunObj.GetRunPath())
 
+        #Modif_20200211
+        with open(os.path.join(self.MiSeqRunObj.GetRunPath(),".miseqUploaderInfo"),'w') as irida_status_f:
+            irida_status_f.write(r'{"Upload Status": "Complete", "Upload ID": "99"}')
 
     def ConcatSampleSheet(self):
         """
@@ -273,6 +325,11 @@ class Handler(FileSystemEventHandler):
                 self.path_setter.OpenParamFile()
                 self.path_setter.ParseParamFile()
 
+                #Modif_20200211
+                self.file_size_manager = ParameterHandler.FileSizeManager(my_debug_level)
+                self.file_size_manager.OpenParamFile()
+                self.file_size_manager.ParseParamFile()
+
                 #path vers la run sur le MiSeq
                 runpath = os.path.dirname(event.src_path)
 
@@ -308,12 +365,14 @@ class Handler(FileSystemEventHandler):
 
                 self.ftl.LogMessage("Export des fichiers du MiSeq run {0} vers {1} en cours".format(runname,self.LspqMiSeqRunObj.GetRunPath()))
 
+
                 #Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\1_Experimental
+
                 self.ExportToLspqMiSeqExperimental()
 
                 if self.CheckIfIridaSamplesInRun():
 
-                    self.CreateIridaSampleSheet()
+                    self.CreateIridaSampleSheet(self.file_size_manager)
                 else:
                     self.ImportIridaUploaderInfoFile()
 
@@ -324,6 +383,7 @@ class Handler(FileSystemEventHandler):
                 self.ExportToLspqMiSeqMiSeqRunTrace()
 
                 #Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\3_SequencesBrutes
+                #Modif_20200211
                 self.ExportToLspqMiSeqSequenceBrute()
 
                 self.ftl.LogMessage("Export des fichiers du MiSeq run {0} vers {1} est termine".format(runname, self.LspqMiSeqRunObj.GetRunPath()))
@@ -352,7 +412,7 @@ class RunOnMiSeq():
     def GetRunPath(self):
         return  self.runpath
 
-    def CreateIridaSampleSheet(self):
+    def CreateIridaSampleSheet(self,good_and_bad_spec_dir):
         """
         Creer une sample sheet contenant seulement les samples a transferer sur irida
         :return:
@@ -360,8 +420,20 @@ class RunOnMiSeq():
 
         shutil.move(self.sampleSheet_file_path,os.path.join(self.runpath,'SampleSheet_original.csv'))
 
+        good_irida_specs = []
+        bad_irida_specs = []
+
+        #Modif_20200211
+        with open(os.path.join(self.runpath,'SampleSheet_original.csv')) as sheet_ori:
+            data = sheet_ori.read().rstrip('\n')
+
+        # Modif_20200211
+        with open(os.path.join(self.runpath,'SampleSheet_temp.csv'),'w') as sheet_temp:
+            sheet_temp.write(data)
+
         with open(self.sampleSheet_file_path,'w') as sheet:
-            with open(os.path.join(self.runpath,'SampleSheet_original.csv')) as sheet_ori:
+            #Modif_20200211
+            with open(os.path.join(self.runpath,'SampleSheet_temp.csv')) as sheet_ori:
                 sample_header_read = False
                 for line in sheet_ori:
                     if re.search(r'Sample_ID', line):
@@ -371,11 +443,48 @@ class RunOnMiSeq():
                         sheet.write(line)
 
                     elif re.search(r'Sample_ID',line):
+                        #Modif_20200211
+                        line_list = line.split(',')
+                        line_list[0] = 'Sample_ID'
+                        line_list[1] = 'Sample_Name'
+                        line = ','.join(line_list)
                         sheet.write(line)
 
                     else:
                         if re.search(r'^.*,.*,.*,.*,.*,.*,.*,.*,2,',line):
-                            sheet.write(line)
+                            line_list = line.split(',')
+                            line_list[1] = line_list[0]
+                            line = ','.join(line_list)
+                            if line_list[0] in good_and_bad_spec_dir['good']:
+                                sheet.write(line)
+                                good_irida_specs.append(line_list[0])
+                            elif line_list[0] in good_and_bad_spec_dir['bad']:
+                                bad_irida_specs.append(line_list[0])
+
+            good_and_bad_iridaspec_dir = {'good':good_irida_specs, 'bad':bad_irida_specs }
+
+        self.WriteGoodAndBadIridaSpecFile(good_and_bad_iridaspec_dir)
+
+    def WriteGoodAndBadIridaSpecFile(self,good_and_bad_iridaspec_dir):
+        #Modif_20200211
+        """
+        Creer les fichiers liste specimens pulsenet a transferer et a ne pas transferer sur irida
+
+        :param spec_dir:
+        :return:
+        """
+        out_good = open(os.path.join(self.runpath,'GoodIridaSamples.csv'),'w')
+        out_bad = open(os.path.join(self.runpath,'BadIridaSamples.csv'),'w')
+
+        for good_spec in good_and_bad_iridaspec_dir['good']:
+            out_good.write(good_spec + '\n')
+
+        for bad_spec in good_and_bad_iridaspec_dir['bad']:
+            out_bad.write(bad_spec + '\n')
+
+        out_bad.close()
+        out_good.close()
+
 
     def SetPath(self):
         '''
