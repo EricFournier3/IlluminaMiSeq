@@ -7,6 +7,7 @@ from watchdog.events import FileSystemEventHandler, FileCreatedEvent
 import Logger
 import ParameterHandler
 import re
+from EmailSender import *
 
 """
 Eric Fournier 2019-07-30
@@ -33,7 +34,8 @@ Liste des modifications
     > Quelques ajustements pour la creation de la sample sheet irida
     > Creation Manuel du fichier .miseqUploaderInfo
     > Ne plus copier automatiquement les SampleSheet de cassette dans LSPQ_MiSeq
-    > Ne plus tenter d envoyer sur Irida les fastq trop petit => creer fichier SamplesTransfered et SampleNotTransfered
+    > Ne plus tenter d envoyer sur Irida les fastq trop petit => creer fichier SamplesTransfered et SampleNotTransfered et envoie par email
+    > email lorsque transfert Irida termine
 
 """
 
@@ -199,7 +201,7 @@ class Handler(FileSystemEventHandler):
         '''
         pass
 
-    def CreateIridaSampleSheet(self,file_size_manager):
+    def CreateIridaSampleSheet(self,file_size_manager,run_name):
         """
         On cree dans le repertoire racine de la run sur le MiSeq, un
         SampleSheet.csv qui contient seulement des specimens irida
@@ -210,7 +212,7 @@ class Handler(FileSystemEventHandler):
         # Modif_20200211
         good_and_bad_spec_dir = self.BuildGoodAndBadFastqList(file_size_manager.GetMinFastqSize())
 
-        self.MiSeqRunObj.CreateIridaSampleSheet(good_and_bad_spec_dir)
+        self.MiSeqRunObj.CreateIridaSampleSheet(good_and_bad_spec_dir,run_name)
 
     def CheckIfIridaSamplesInRun(self):
         if re.search('pulsenet',self.new_run_name):
@@ -349,6 +351,8 @@ class Handler(FileSystemEventHandler):
                 #Arborescence de la run sur le MiSeq
                 self.MiSeqRunObj.SetPath()
 
+
+
                 #On defini le nouveau nom de la run
                 self.SetNewRunName()
 
@@ -372,7 +376,8 @@ class Handler(FileSystemEventHandler):
 
                 if self.CheckIfIridaSamplesInRun():
 
-                    self.CreateIridaSampleSheet(self.file_size_manager)
+                    self.CreateIridaSampleSheet(self.file_size_manager,self.new_run_name)
+                    self.MiSeqRunObj.MonitorIridaSamplesTransfer()
                 else:
                     self.ImportIridaUploaderInfoFile()
 
@@ -412,7 +417,7 @@ class RunOnMiSeq():
     def GetRunPath(self):
         return  self.runpath
 
-    def CreateIridaSampleSheet(self,good_and_bad_spec_dir):
+    def CreateIridaSampleSheet(self,good_and_bad_spec_dir,lspq_miseq_dir_name):
         """
         Creer une sample sheet contenant seulement les samples a transferer sur irida
         :return:
@@ -464,11 +469,13 @@ class RunOnMiSeq():
             good_and_bad_iridaspec_dir = {'good':good_irida_specs, 'bad':bad_irida_specs }
 
         self.WriteGoodAndBadIridaSpecFile(good_and_bad_iridaspec_dir)
+        self.EmailGoodAndBadIridaSpecFile(os.path.join(self.runpath,'GoodIridaSamples.csv'),os.path.join(self.runpath,'BadIridaSamples.csv'),lspq_miseq_dir_name)
 
     def WriteGoodAndBadIridaSpecFile(self,good_and_bad_iridaspec_dir):
-        #Modif_20200211
+
         """
-        Creer les fichiers liste specimens pulsenet a transferer et a ne pas transferer sur irida
+        Modif_20200211
+        Creer les fichiers liste des specimens pulsenet a transferer et a ne pas transferer sur irida
 
         :param spec_dir:
         :return:
@@ -484,6 +491,18 @@ class RunOnMiSeq():
 
         out_bad.close()
         out_good.close()
+
+    def EmailGoodAndBadIridaSpecFile(self,good_file,bad_file,lspq_miseq_dir_name):
+        """
+        Modif_20200211
+        Envoyer par email les fichiers liste des specimens pulsenet a transferer et a ne pas transferer sur irida
+        :return:
+        """
+
+        files_to_send = {'good':good_file,'bad':bad_file}
+        irida_spec_emailer = IridaSpecEmailer(files_to_send,my_debug_level,lspq_miseq_dir_name,os.path.basename(self.runpath))
+        irida_spec_emailer.SendGoodAndBadSpecListByEmail()
+
 
 
     def SetPath(self):
@@ -522,6 +541,13 @@ class RunOnMiSeq():
 
     def GetSampleSheetPath(self):
         return self.sampleSheet_file_path
+
+    def MonitorIridaSamplesTransfer(self):
+        from Deamons import IridaTransferMonitorer
+        monitored_file = os.path.join(self.runpath,".miseqUploaderInfo")
+        monitorer = IridaTransferMonitorer(monitored_file)
+        monitorer.StartMonitoring()
+
 
 class RunBackuper():
     """

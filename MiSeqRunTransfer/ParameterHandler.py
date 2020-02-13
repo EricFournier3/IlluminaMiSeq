@@ -43,6 +43,44 @@ class FileSizeManager():
         return self.min_fastq_size
 
 
+class EmailDestManager():
+    """
+    Modif_20200211
+
+    """
+
+    send_type_dict = {'irida': 'irida_email_recipient'}
+
+    def __init__(self,debug_level,send_type):
+        self.debug_val = debug_setting[debug_level]
+        self.param_file = os.path.join('C:\\', 'WatchDogFiles', 'MiSeqRunTransferParam.yaml')
+        self.send_type = send_type
+
+    def OpenParamFile(self):
+        """
+        Ouverture du fichier de parametres
+        :return:
+        """
+        self.param_file_handle = open(self.param_file)
+
+    def CloseParamFile(self):
+        """
+        Fermeture du fichier de parametres
+        :return:
+        """
+        self.param_file_handle.close()
+
+    def ParseParamFile(self):
+        self.all_dict = yaml.load(self.param_file_handle)
+
+        self.recipient_list = self.all_dict[EmailDestManager.send_type_dict[self.send_type]][0][self.debug_val]
+
+
+    def GetRecipientList(self):
+
+        return self.recipient_list
+
+
 class PathSetter():
     """
     Gere les chemins d acces definis dans le fichier de parametres MiSeqRunTransferParam.yaml
