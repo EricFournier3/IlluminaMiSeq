@@ -39,8 +39,8 @@
       <file leaf-file-name="MiSeqRunTransferParam.yaml" pinned="false" current-in-tab="true">
         <entry file="file://C:/WatchDogFiles/MiSeqRunTransferParam.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="37" column="11" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="12" />
+            <state relative-caret-position="253">
+              <caret line="21" column="59" lean-forward="true" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -751,8 +751,8 @@
     </entry>
     <entry file="file://C:/WatchDogFiles/MiSeqRunTransferParam.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="37" column="11" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="12" />
+        <state relative-caret-position="253">
+          <caret line="21" column="59" lean-forward="true" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
           <folding />
         </state>
       </provider>

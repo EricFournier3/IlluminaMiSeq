@@ -25,5 +25,24 @@ backup_disk:
    debug_inspq_6499_J: U:\TEMP\BackUp_J
    no_debug_inspq_8719: D:\8719
    no_debug_inspq_8900: D:\8900
+min_fastq_size:
+ - debug_inspq_6499_I: 5000
+   debug_inspq_6499_J: 5000
+   no_debug_inspq_8719: 5000000
+   no_debug_inspq_8900: 5000000
+irida_email_recipient:
+- debug_inspq_6499_I: ["eric.fournier@inspq.qc.ca"]
+  debug_inspq_6499_J: ["eric.fournier@inspq.qc.ca"]
+  no_debug_inspq_8719: ["sadjia.bekal@inspq.qc.ca","eric.fournier@inspq.qc.ca"]
+  no_debug_inspq_8900: ["sadjia.bekal@inspq.qc.ca","eric.fournier@inspq.qc.ca"]
+thread_sleep:
+- debug_inspq_6499_I: 5
+  debug_inspq_6499_J: 5
+  no_debug_inspq_8719: 300
+  no_debug_inspq_8900: 300
+
+
+
+
    
    
