@@ -10,8 +10,37 @@ from ParameterHandler import EmailDestManager
 from ParameterHandler import EmailDestManager
 
 class IridaTransferStatusEmailer():
-    def __init__(self):
+    def __init__(self,miseq_run_id,lspq_miseq_run_name,debug_level):
         pass
+        self.miseq_run_id = miseq_run_id
+        self.lspq_miseq_run_name = lspq_miseq_run_name
+        self.debug_level = debug_level
+
+        self.server_host = 'smtp.inspq.qc.ca:25'
+
+        self.message_from = "eric.fournier@inspq.qc.ca"
+        self.email_manager = EmailDestManager(send_type='irida', debug_level=self.debug_level)
+        self.email_manager.OpenParamFile()
+        self.email_manager.ParseParamFile()
+        self.email_manager.CloseParamFile()
+
+        self.message_to = self.email_manager.GetRecipientList()
+
+        self.message_text = "Bonjour,\nle transfert vers irida de la run {0}:{1} est terminé".format(basename(self.miseq_run_id),self.lspq_miseq_run_name)
+        self.message_subject = "Pulsenet : envoi irida {}:{}".format(basename(self.miseq_run_id),self.lspq_miseq_run_name)
+
+    def SendIridaTransferStatusByEmail(self):
+
+        msg_obj = MIMEMultipart()
+        msg_obj.attach(MIMEText(self.message_text,_charset='iso-8859-15'))
+        msg_obj['Subject'] = self.message_subject
+
+        msg_obj['From'] = "eric.fournier@inspq.qc.ca"
+        msg_obj['To'] = ';'.join(self.message_to)
+
+        server = smtplib.SMTP(self.server_host)
+        server.sendmail(msg_obj['From'], self.message_to, msg_obj.as_string())
+        server.quit()
 
 
 class IridaSpecEmailer():

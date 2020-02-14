@@ -377,7 +377,7 @@ class Handler(FileSystemEventHandler):
                 if self.CheckIfIridaSamplesInRun():
 
                     self.CreateIridaSampleSheet(self.file_size_manager,self.new_run_name)
-                    self.MiSeqRunObj.MonitorIridaSamplesTransfer()
+                    self.MiSeqRunObj.MonitorIridaSamplesTransfer(self.new_run_name)
                 else:
                     self.ImportIridaUploaderInfoFile()
 
@@ -468,10 +468,13 @@ class RunOnMiSeq():
 
             good_and_bad_iridaspec_dir = {'good':good_irida_specs, 'bad':bad_irida_specs }
 
-        self.WriteGoodAndBadIridaSpecFile(good_and_bad_iridaspec_dir)
-        self.EmailGoodAndBadIridaSpecFile(os.path.join(self.runpath,'GoodIridaSamples.csv'),os.path.join(self.runpath,'BadIridaSamples.csv'),lspq_miseq_dir_name)
+            good_file_name = 'GoodIridaSamples_{0}_{1}.csv'.format(os.path.basename(self.runpath),lspq_miseq_dir_name)
+            bad_file_name = 'BadIridaSamples_{0}_{1}.csv'.format(os.path.basename(self.runpath), lspq_miseq_dir_name)
 
-    def WriteGoodAndBadIridaSpecFile(self,good_and_bad_iridaspec_dir):
+        self.WriteGoodAndBadIridaSpecFile(good_and_bad_iridaspec_dir,good_file_name,bad_file_name)
+        self.EmailGoodAndBadIridaSpecFile(os.path.join(self.runpath,good_file_name),os.path.join(self.runpath,bad_file_name),lspq_miseq_dir_name)
+
+    def WriteGoodAndBadIridaSpecFile(self,good_and_bad_iridaspec_dir,good_file_name,bad_file_name):
 
         """
         Modif_20200211
@@ -480,8 +483,8 @@ class RunOnMiSeq():
         :param spec_dir:
         :return:
         """
-        out_good = open(os.path.join(self.runpath,'GoodIridaSamples.csv'),'w')
-        out_bad = open(os.path.join(self.runpath,'BadIridaSamples.csv'),'w')
+        out_good = open(os.path.join(self.runpath,good_file_name),'w')
+        out_bad = open(os.path.join(self.runpath,bad_file_name),'w')
 
         for good_spec in good_and_bad_iridaspec_dir['good']:
             out_good.write(good_spec + '\n')
@@ -542,10 +545,12 @@ class RunOnMiSeq():
     def GetSampleSheetPath(self):
         return self.sampleSheet_file_path
 
-    def MonitorIridaSamplesTransfer(self):
+    def MonitorIridaSamplesTransfer(self,lspq_miseq_dir_name):
         from Deamons import IridaTransferMonitorer
-        monitored_file = os.path.join(self.runpath,".miseqUploaderInfo")
-        monitorer = IridaTransferMonitorer(monitored_file)
+        #ICI
+        monitored_file_standard = os.path.join(self.runpath,".miseqUploaderInfo")
+        monitored_file_multithread = os.path.join(self.runpath, "irida_uploader_status.info")
+        monitorer = IridaTransferMonitorer({'standard':monitored_file_standard,'multithread':monitored_file_multithread},my_debug_level,self.runpath,lspq_miseq_dir_name)
         monitorer.StartMonitoring()
 
 
