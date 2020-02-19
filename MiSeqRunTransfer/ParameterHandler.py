@@ -9,6 +9,34 @@ Eric Fournier 2019-07-31
 
 debug_setting = {1: 'debug_inspq_6499_I', 2: 'debug_inspq_6499_J', 3: 'no_debug_inspq_8719', 4: 'no_debug_inspq_8900'}
 
+#TODO heritage a faire
+
+class IridaUploaderManager():
+    def __init__(self,debug_level):
+        self.param_file = os.path.join('C:\\', 'WatchDogFiles', 'MiSeqRunTransferParam.yaml')
+        self.debug_val = debug_setting[debug_level]
+
+    def OpenParamFile(self):
+        """
+        Ouverture du fichier de parametres
+        :return:
+        """
+        self.param_file_handle = open(self.param_file)
+
+    def CloseParamFile(self):
+        """
+        Fermeture du fichier de parametres
+        :return:
+        """
+        self.param_file_handle.close()
+
+    def ParseParamFile(self):
+        self.all_dict = yaml.load(self.param_file_handle)
+        self.thread_number = int(self.all_dict['iridauploader_thread_number'][0][self.debug_val])
+
+    def GetThreadNumber(self):
+        return self.thread_number
+
 
 class ThreadManager():
     def __init__(self,debug_level):

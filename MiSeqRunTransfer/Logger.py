@@ -6,6 +6,8 @@ Eric Fournier 2019-07-31
 """
 
 
+#TODO IRIDA LOGGER
+
 class FileTransferLogger:
     """
     Pour Loggin des transferts de fichiers des runs MiSeq terminees vers S:\\Partage\LSPQ_MiSeq

@@ -6,7 +6,123 @@ import os
 import csv
 import re
 from EmailSender import IridaTransferStatusEmailer
-from ParameterHandler import ThreadManager
+from ParameterHandler import ThreadManager,IridaUploaderManager
+import subprocess
+
+
+class IridaUploader():
+    def __init__(self, run_path, lspq_miseq_run_name,debug_level):
+        self.run_path = run_path
+        self.lspq_miseq_run_name = lspq_miseq_run_name
+        self.debug_level = debug_level
+        self.exec_name = 'iridauploader'
+        self.parser = 'miseq'
+
+        self.thread_manager = ThreadManager(debug_level=self.debug_level)
+        self.thread_manager.OpenParamFile()
+        self.thread_manager.ParseParamFile()
+        self.thread_manager.CloseParamFile()
+
+        self.parameter_manager = IridaUploaderManager(self.debug_level)
+        self.parameter_manager.OpenParamFile()
+        self.parameter_manager.ParseParamFile()
+        self.parameter_manager.CloseParamFile()
+
+        self.log_file = os.path.join(self.run_path,"IridaUploaderLogFromWatchDog.log")
+
+        self.status_file = os.path.join(self.run_path,"irida_uploader_status.info")
+
+        self.thread_number = self.parameter_manager.GetThreadNumber()
+
+        self.status_emailer = IridaTransferStatusEmailer(os.path.basename(run_path),self.lspq_miseq_run_name,self.debug_level)
+
+        self.is_error = False
+
+    def Go(self,thread_name):
+        #TODO LOGGER DANS DES FICHIERS
+        while not self.CheckStatusOk():
+            print "Check"
+            time.sleep(self.thread_manager.GetSleepTime())
+
+            if(self.is_error):
+                #TODO Connect Check Point
+                print "Try to reconnect"
+                log_handler = open(self.log_file, 'a')
+                #process = subprocess.Popen([self.exec_name,-m,'-t',str(self.thread_number),'-d',self.run_path,'-cr',self.parser],stdout=log_handler,stderr=log_handler,shell=True)
+                process = subprocess.Popen([self.exec_name, '-d', self.run_path, '-cr', self.parser],stdout=log_handler, stderr=log_handler, shell=True)
+                process.communicate()
+                process.terminate()
+                log_handler.close()
+        #
+        # log_handler.close()
+        #
+        # if self.CheckIfTransferOk():
+        #    self.SendTransferStatusEmail()
+        # else:
+        #    print "Erreur de transfert Irida" #TODO logger en console avec logger
+
+
+
+        print "FINISH **********"
+            
+
+    def CheckStatusOk(self):
+
+        self.is_error = False
+
+        if not os.path.exists(self.status_file):
+            return False
+
+
+        status = ""
+        with open(self.status_file, 'r') as file:
+            for row in file:
+                if re.search(r'Upload Status', row):
+                    status = row.split(':')[1]
+                    status = status.rstrip()
+                    status = status.lstrip()
+                    status = status.replace('"', '', 2)
+
+        print "Status is ",status
+
+        if status.upper() == "COMPLETE":
+
+            return True
+        else:
+            if(re.search('error',status)):
+                os.remove(self.status_file)
+                self.is_error = True
+            return False
+
+    def CheckIfTransferOk(self):
+        log_handler = open(self.log_file)
+
+        for line in log_handler:
+            if re.search('ERROR',line):
+                log_handler.close()
+                return False
+
+        log_handler.close()
+        return True
+
+
+    def Init(self):
+        thread = threading.Thread(target=self.Go, args=("IridaUploader",))
+        thread.start()
+
+        log_handler = open(self.log_file, 'a')
+        #TODO DEMARRER LE EndPoint
+        print "Start i"
+        process = subprocess.Popen([self.exec_name, '-t', str(self.thread_number), '-d', self.run_path, '-cr', self.parser],stdout=log_handler, stderr=log_handler, shell=True)
+        process.communicate()
+        process.terminate()
+        print "ENd 1"
+        log_handler.close()
+
+
+
+    def SendTransferStatusEmail(self):
+        self.status_emailer.SendIridaTransferStatusByEmail()
 
 class IridaTransferMonitorer():
     def __init__(self,monitored_file,debug_level,runid,lspq_miseq_run_name):

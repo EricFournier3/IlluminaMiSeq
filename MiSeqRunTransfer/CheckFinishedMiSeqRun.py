@@ -36,6 +36,9 @@ Liste des modifications
     > Ne plus copier automatiquement les SampleSheet de cassette dans LSPQ_MiSeq
     > Ne plus tenter d envoyer sur Irida les fastq trop petit => creer fichier SamplesTransfered et SampleNotTransfered et envoie par email
     > email lorsque transfert Irida termine
+    
+- Modif_20200214: Eric Fournier 2020-02-14
+    > Appeler le IridaUploader
 
 """
 
@@ -377,7 +380,8 @@ class Handler(FileSystemEventHandler):
                 if self.CheckIfIridaSamplesInRun():
 
                     self.CreateIridaSampleSheet(self.file_size_manager,self.new_run_name)
-                    self.MiSeqRunObj.MonitorIridaSamplesTransfer(self.new_run_name)
+                    #self.MiSeqRunObj.MonitorIridaSamplesTransfer(self.new_run_name)
+                    self.MiSeqRunObj.LaunchIridaUploader(self.new_run_name)
                 else:
                     self.ImportIridaUploaderInfoFile()
 
@@ -473,6 +477,12 @@ class RunOnMiSeq():
 
         self.WriteGoodAndBadIridaSpecFile(good_and_bad_iridaspec_dir,good_file_name,bad_file_name)
         self.EmailGoodAndBadIridaSpecFile(os.path.join(self.runpath,good_file_name),os.path.join(self.runpath,bad_file_name),lspq_miseq_dir_name)
+
+    def LaunchIridaUploader(self,lspq_miseq_run_name):
+        #TODO verfier et activer le check point => besoin d un client checkpoint
+        from Deamons import IridaUploader
+        irida_uploader_obj = IridaUploader(self.runpath,lspq_miseq_run_name,my_debug_level)
+        irida_uploader_obj.Init()
 
     def WriteGoodAndBadIridaSpecFile(self,good_and_bad_iridaspec_dir,good_file_name,bad_file_name):
 
