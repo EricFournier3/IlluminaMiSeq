@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/CheckFinishedMiSeqRun.py" line="557" />
+    <bookmark url="file://$PROJECT_DIR$/CheckFinishedMiSeqRun.py" line="558" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12f2c977-a6d6-4f08-9a1d-aaa935335750" name="Default" comment="" />
@@ -29,18 +29,18 @@
       <file leaf-file-name="MiSeqRunTransferParam.yaml" pinned="false" current-in-tab="false">
         <entry file="file://C:/WatchDogFiles/MiSeqRunTransferParam.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="45" column="24" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+            <state relative-caret-position="610">
+              <caret line="36" column="79" lean-forward="true" selection-start-line="36" selection-start-column="79" selection-end-line="36" selection-end-column="79" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Deamons.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Deamons.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Deamons.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="50" column="62" lean-forward="false" selection-start-line="50" selection-start-column="62" selection-end-line="50" selection-end-column="62" />
+            <state relative-caret-position="340">
+              <caret line="62" column="16" lean-forward="true" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
               <folding>
                 <element signature="e#16#32#0" expanded="true" />
               </folding>
@@ -63,18 +63,18 @@
       <file leaf-file-name="ParameterHandler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ParameterHandler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="43" column="93" lean-forward="true" selection-start-line="43" selection-start-column="93" selection-end-line="43" selection-end-column="93" />
+            <state relative-caret-position="238">
+              <caret line="15" column="93" lean-forward="true" selection-start-line="15" selection-start-column="93" selection-end-line="15" selection-end-column="93" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CheckFinishedMiSeqRun.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CheckFinishedMiSeqRun.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CheckFinishedMiSeqRun.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="382" column="65" lean-forward="false" selection-start-line="382" selection-start-column="38" selection-end-line="382" selection-end-column="65" />
+            <state relative-caret-position="272">
+              <caret line="19" column="80" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="82" />
               <folding>
                 <element signature="e#15#26#0" expanded="true" />
               </folding>
@@ -85,8 +85,8 @@
       <file leaf-file-name="Logger.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Logger.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+            <state relative-caret-position="-204">
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -103,10 +103,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>InfoFile</find>
-      <find>_info</find>
-      <find>CreatePath</find>
-      <find>Modif</find>
       <find>RunOnPartageLspqMiSeq</find>
       <find>mkdir</find>
       <find>print</find>
@@ -133,6 +129,10 @@
       <find>os</find>
       <find>MonitorIridaSamplesTransfer</find>
       <find>MonitorTransfer</find>
+      <find>Logger</find>
+      <find>try_number</find>
+      <find>current_status</find>
+      <find>On_cre</find>
     </findStrings>
     <replaceStrings>
       <replace>st_ref_dict</replace>
@@ -180,18 +180,19 @@
         <option value="$PROJECT_DIR$/EmailSender.py" />
         <option value="U:/TutorialTesting/Python/GENERAL_TEST/test1.py" />
         <option value="$PROJECT_DIR$/Tools.py" />
-        <option value="$PROJECT_DIR$/CheckFinishedMiSeqRun.py" />
-        <option value="C:/WatchDogFiles/MiSeqRunTransferParam.yaml" />
         <option value="$PROJECT_DIR$/ParameterHandler.py" />
         <option value="$PROJECT_DIR$/Logger.py" />
         <option value="$PROJECT_DIR$/Deamons.py" />
+        <option value="C:/WatchDogFiles/MiSeqRunTransferParam.yaml" />
+        <option value="$PROJECT_DIR$/CheckFinishedMiSeqRun.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="62" />
-    <option name="width" value="652" />
-    <option name="height" value="768" />
+    <option name="y" value="284" />
+    <option name="width" value="1304" />
+    <option name="height" value="766" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -367,13 +368,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="62" y="0" width="652" height="768" extended-state="1" />
+    <frame x="54" y="-8" width="1634" height="1066" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38679245" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15203956" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21288837" sideWeight="0.116656646" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28794643" sideWeight="0.88334334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23901394" sideWeight="0.88334334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18327759" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -689,24 +690,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CheckFinishedMiSeqRun.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="382" column="65" lean-forward="false" selection-start-line="382" selection-start-column="38" selection-end-line="382" selection-end-column="65" />
-          <folding>
-            <element signature="e#15#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/WatchDogFiles/MiSeqRunTransferParam.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="45" column="24" lean-forward="true" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EmailSender.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -717,28 +700,46 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ParameterHandler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="43" column="93" lean-forward="true" selection-start-line="43" selection-start-column="93" selection-end-line="43" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Logger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
+        <state relative-caret-position="-204">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Deamons.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="50" column="62" lean-forward="false" selection-start-line="50" selection-start-column="62" selection-end-line="50" selection-end-column="62" />
+        <state relative-caret-position="340">
+          <caret line="62" column="16" lean-forward="true" selection-start-line="62" selection-start-column="16" selection-end-line="62" selection-end-column="16" />
           <folding>
             <element signature="e#16#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ParameterHandler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="15" column="93" lean-forward="true" selection-start-line="15" selection-start-column="93" selection-end-line="15" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/WatchDogFiles/MiSeqRunTransferParam.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="610">
+          <caret line="36" column="79" lean-forward="true" selection-start-line="36" selection-start-column="79" selection-end-line="36" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CheckFinishedMiSeqRun.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="19" column="80" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="82" />
+          <folding>
+            <element signature="e#15#26#0" expanded="true" />
           </folding>
         </state>
       </provider>

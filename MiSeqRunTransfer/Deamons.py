@@ -8,6 +8,7 @@ import re
 from EmailSender import IridaTransferStatusEmailer
 from ParameterHandler import ThreadManager,IridaUploaderManager
 import subprocess
+import Logger
 
 
 class IridaUploader():
@@ -31,39 +32,45 @@ class IridaUploader():
         self.log_file = os.path.join(self.run_path,"IridaUploaderLogFromWatchDog.log")
 
         self.status_file = os.path.join(self.run_path,"irida_uploader_status.info")
+        self.irida_tranfer_status_file = os.path.join(self.run_path,"realtime_irida_uploader_status.log")
 
         self.thread_number = self.parameter_manager.GetThreadNumber()
+
+        self.irida_tranfer_status_logger = Logger.IridaTransferLogger('irida',self.irida_tranfer_status_file)
 
         self.status_emailer = IridaTransferStatusEmailer(os.path.basename(run_path),self.lspq_miseq_run_name,self.debug_level)
 
         self.is_error = False
+        self.is_ok = False
+
+        self.current_status= "Starting-up"
+
+        self.try_number = 0
 
     def Go(self,thread_name):
-        #TODO LOGGER DANS DES FICHIERS
         while not self.CheckStatusOk():
-            print "Check"
             time.sleep(self.thread_manager.GetSleepTime())
 
+            self.irida_tranfer_status_logger.LogMessage("Current Irida transfer is " + self.current_status)
+
             if(self.is_error):
-                #TODO Connect Check Point
-                print "Try to reconnect"
+                self.try_number += 1
+                self.irida_tranfer_status_logger.LogMessage("IridaUploader try " + str(self.try_number))
                 log_handler = open(self.log_file, 'a')
-                #process = subprocess.Popen([self.exec_name,-m,'-t',str(self.thread_number),'-d',self.run_path,'-cr',self.parser],stdout=log_handler,stderr=log_handler,shell=True)
+                #avec multithread
+                process = subprocess.Popen([self.exec_name,-m,'-t',str(self.thread_number),'-d',self.run_path,'-cr',self.parser],stdout=log_handler,stderr=log_handler,shell=True)
+
+                sans multithread
                 process = subprocess.Popen([self.exec_name, '-d', self.run_path, '-cr', self.parser],stdout=log_handler, stderr=log_handler, shell=True)
                 process.communicate()
                 process.terminate()
                 log_handler.close()
-        #
-        # log_handler.close()
-        #
-        # if self.CheckIfTransferOk():
-        #    self.SendTransferStatusEmail()
-        # else:
-        #    print "Erreur de transfert Irida" #TODO logger en console avec logger
 
+        if self.is_ok:
+            self.irida_tranfer_status_logger.LogMessage("Envoie du email de confirmation du transfert Irida")
+            self.SendTransferStatusEmail()
 
-
-        print "FINISH **********"
+        self.irida_tranfer_status_logger.LogMessage("Irida transfer finished")
             
 
     def CheckStatusOk(self):
@@ -73,23 +80,21 @@ class IridaUploader():
         if not os.path.exists(self.status_file):
             return False
 
-
-        status = ""
         with open(self.status_file, 'r') as file:
             for row in file:
                 if re.search(r'Upload Status', row):
-                    status = row.split(':')[1]
-                    status = status.rstrip()
-                    status = status.lstrip()
-                    status = status.replace('"', '', 2)
+                    self.current_status = row.split(':')[1]
+                    self.current_status = self.current_status.rstrip()
+                    self.current_status = self.current_status.lstrip()
+                    self.current_status = self.current_status.replace('"', '', 2)
 
-        print "Status is ",status
+        if self.current_status.upper() == "COMPLETE":
 
-        if status.upper() == "COMPLETE":
+            self.is_ok = True
 
             return True
         else:
-            if(re.search('error',status)):
+            if(re.search('error',self.current_status)):
                 os.remove(self.status_file)
                 self.is_error = True
             return False
@@ -111,15 +116,12 @@ class IridaUploader():
         thread.start()
 
         log_handler = open(self.log_file, 'a')
-        #TODO DEMARRER LE EndPoint
-        print "Start i"
+        self.irida_tranfer_status_logger.LogMessage("IridaUploader try " + str(self.try_number))
         process = subprocess.Popen([self.exec_name, '-t', str(self.thread_number), '-d', self.run_path, '-cr', self.parser],stdout=log_handler, stderr=log_handler, shell=True)
         process.communicate()
         process.terminate()
-        print "ENd 1"
+
         log_handler.close()
-
-
 
     def SendTransferStatusEmail(self):
         self.status_emailer.SendIridaTransferStatusByEmail()

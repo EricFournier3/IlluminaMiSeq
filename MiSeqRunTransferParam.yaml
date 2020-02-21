@@ -40,9 +40,8 @@ thread_sleep:
   debug_inspq_6499_J: 5
   no_debug_inspq_8719: 300
   no_debug_inspq_8900: 300
-
-
-
-
-   
-   
+iridauploader_thread_number:
+- debug_inspq_6499_I: 1
+  debug_inspq_6499_J: 1
+  no_debug_inspq_8719: 1
+  no_debug_inspq_8900: 1
