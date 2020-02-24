@@ -58,9 +58,9 @@ class IridaUploader():
                 self.irida_tranfer_status_logger.LogMessage("IridaUploader try " + str(self.try_number))
                 log_handler = open(self.log_file, 'a')
                 #avec multithread
-                process = subprocess.Popen([self.exec_name,-m,'-t',str(self.thread_number),'-d',self.run_path,'-cr',self.parser],stdout=log_handler,stderr=log_handler,shell=True)
+                #process = subprocess.Popen([self.exec_name,'-m','-t',str(self.thread_number),'-d',self.run_path,'-cr',self.parser],stdout=log_handler,stderr=log_handler,shell=True)
 
-                sans multithread
+                #sans multithread
                 process = subprocess.Popen([self.exec_name, '-d', self.run_path, '-cr', self.parser],stdout=log_handler, stderr=log_handler, shell=True)
                 process.communicate()
                 process.terminate()
