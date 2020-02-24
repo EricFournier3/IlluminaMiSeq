@@ -325,7 +325,7 @@ class Handler(FileSystemEventHandler):
 
         #Lorsqu une run MiSeq est terminee, le fichier CompletedJobInfo.xml est cree dans D:\Illumina\MiSeqOutput\IdDeLaRun
         if(isinstance(event,FileCreatedEvent)):
-            if(event.src_path.endswith('CompletedJobInfo.xml')):
+            if((event.src_path.endswith('CompletedJobInfo.xml')) and (not os.path.dirname(event.src_path).endswith('Alignment'))):
                 # Parameters handler
                 self.path_setter = ParameterHandler.PathSetter(my_debug_level)
                 self.path_setter.OpenParamFile()
