@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/CheckFinishedMiSeqRun.py" line="327" />
+    <bookmark url="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/RemoteRequestV2CDSLSPQ2641.py" line="113" />
+    <bookmark url="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/RemoteRequestV2CDSLSPQ2641.py" line="397" />
+    <bookmark url="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/RemoteRequestV2CDSLSPQ2641.py" line="464" />
+    <bookmark url="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/RemoteRequestV2CDSLSPQ2641.py" line="411" />
+    <bookmark url="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/NCBIrequestV2CDSLSPQ2641.py" line="706" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="12f2c977-a6d6-4f08-9a1d-aaa935335750" name="Default" comment="" />
@@ -14,83 +18,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="test1.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test1.py" pinned="false" current-in-tab="true">
         <entry file="file://U:/TutorialTesting/Python/GENERAL_TEST/test1.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="14" column="46" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
               <folding>
                 <element signature="e#25#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MiSeqRunTransferParam.yaml" pinned="false" current-in-tab="false">
-        <entry file="file://C:/WatchDogFiles/MiSeqRunTransferParam.yaml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="610">
-              <caret line="36" column="79" lean-forward="true" selection-start-line="36" selection-start-column="79" selection-end-line="36" selection-end-column="79" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Deamons.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Deamons.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="90" column="53" lean-forward="true" selection-start-line="90" selection-start-column="53" selection-end-line="90" selection-end-column="53" />
-              <folding>
-                <element signature="e#16#32#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EmailSender.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EmailSender.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-317">
-              <caret line="28" column="77" lean-forward="true" selection-start-line="28" selection-start-column="77" selection-end-line="28" selection-end-column="77" />
-              <folding>
-                <element signature="e#25#39#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ParameterHandler.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ParameterHandler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="216" column="8" lean-forward="false" selection-start-line="216" selection-start-column="8" selection-end-line="216" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CheckFinishedMiSeqRun.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CheckFinishedMiSeqRun.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="382" column="89" lean-forward="true" selection-start-line="382" selection-start-column="89" selection-end-line="382" selection-end-column="89" />
-              <folding>
-                <element signature="e#15#26#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Logger.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Logger.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-162">
-              <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#14#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -107,21 +41,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>print</find>
-      <find>Original</find>
-      <find>pulsenet</find>
-      <find>Modif_20200211</find>
-      <find>miseqUploaderInfo</find>
-      <find>ParameterHandler</find>
-      <find>GetBackupDiskDir</find>
-      <find>ExportToLspqMiSeqExperimental</find>
-      <find>ExportToLspqMiSeqSequenceBrute</find>
-      <find>ImportIridaUploaderInfoFile</find>
-      <find>spec_dir</find>
-      <find>good_and_bad_spec_dir</find>
-      <find>good_and_bad_iridaspec_dir</find>
-      <find>my_debug_level</find>
-      <find>new_run_name</find>
       <find>CheckIfIridaSamplesInRun</find>
       <find>Info</find>
       <find>.miseqUploaderInfo</find>
@@ -137,6 +56,21 @@
       <find>On_cre</find>
       <find>Daemons</find>
       <find>Deamons</find>
+      <find>Alignment</find>
+      <find>xml</find>
+      <find>Checkbutton</find>
+      <find>CDSLSPQ-2641</find>
+      <find>GoBact</find>
+      <find>CheckIfManualBlastNCBI</find>
+      <find>2641</find>
+      <find>raw</find>
+      <find>Launc</find>
+      <find>raw_input</find>
+      <find>ParseBlastResultFileHTML</find>
+      <find>CutFasta</find>
+      <find>NCBIbactReportV2</find>
+      <find>process</find>
+      <find>here</find>
     </findStrings>
     <replaceStrings>
       <replace>st_ref_dict</replace>
@@ -187,7 +121,12 @@
         <option value="$PROJECT_DIR$/Logger.py" />
         <option value="C:/WatchDogFiles/MiSeqRunTransferParam.yaml" />
         <option value="$PROJECT_DIR$/Deamons.py" />
+        <option value="U:/PROJETS/DT1/C2/BION_20200226/IdbmPhylo_TEST.py" />
         <option value="U:/TutorialTesting/Python/GENERAL_TEST/test1.py" />
+        <option value="U:/PROJETS/DT1/C2/CDSLSPQ-2641/NCBIrequestV2CDSLSPQ2641.py" />
+        <option value="U:/PROJETS/DT1/C2/CDSLSPQ-2641/RemoteRequestV2CDSLSPQ2641.py" />
+        <option value="U:/PROJETS/DT1/C2/CDSLSPQ-2641/PourProduction/RemoteRequestV2CDSLSPQ2641.py" />
+        <option value="U:/PROJETS/DT1/C2/CDSLSPQ-2641/PourProduction/NCBIrequestV2CDSLSPQ2641.py" />
         <option value="$PROJECT_DIR$/CheckFinishedMiSeqRun.py" />
       </list>
     </option>
@@ -247,7 +186,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/CheckFinishedMiSeqRun.py" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ParameterHandler.py" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -279,36 +218,36 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="NCBIrequestV2Test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="RemoteRequestV2CDSLSPQ2641" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="U:/TEMP/REMOTE_REQUEST_TEST_20200114" />
+      <option name="WORKING_DIRECTORY" value="U:/PROJETS/DT1/C2/CDSLSPQ-2641" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="IlluminaMiSeq" />
-      <option name="SCRIPT_NAME" value="U:/TEMP/REMOTE_REQUEST_TEST_20200114/NCBIrequestV2Test.py" />
+      <option name="SCRIPT_NAME" value="U:/PROJETS/DT1/C2/CDSLSPQ-2641/RemoteRequestV2CDSLSPQ2641.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="RemoteRequestV2 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="RemoteRequestV2Test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="U:/TEMP/REMOTE_REQUEST_20200121" />
+      <option name="WORKING_DIRECTORY" value="U:/PROJETS/DT1/C2/CDSLSPQ-2525/PourProduction" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="GENERAL_TEST" />
-      <option name="SCRIPT_NAME" value="U:/TEMP/REMOTE_REQUEST_20200121/RemoteRequestV2.py" />
+      <module name="IlluminaMiSeq" />
+      <option name="SCRIPT_NAME" value="U:/PROJETS/DT1/C2/CDSLSPQ-2525/PourProduction/RemoteRequestV2Test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -350,17 +289,17 @@
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.test1" />
       <item index="1" class="java.lang.String" itemvalue="Python.RemoteRequestV2Test" />
-      <item index="2" class="java.lang.String" itemvalue="Python.NCBIrequestV2Test" />
-      <item index="3" class="java.lang.String" itemvalue="Python.RemoteRequestV2 (1)" />
-      <item index="4" class="java.lang.String" itemvalue="Python.CheckFinishedMiSeqRun" />
+      <item index="2" class="java.lang.String" itemvalue="Python.CheckFinishedMiSeqRun" />
+      <item index="3" class="java.lang.String" itemvalue="Python.RemoteRequestV2Test (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Python.RemoteRequestV2CDSLSPQ2641" />
     </list>
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.CheckFinishedMiSeqRun" />
-        <item index="1" class="java.lang.String" itemvalue="Python.test1" />
-        <item index="2" class="java.lang.String" itemvalue="Python.RemoteRequestV2Test" />
-        <item index="3" class="java.lang.String" itemvalue="Python.RemoteRequestV2 (1)" />
-        <item index="4" class="java.lang.String" itemvalue="Python.NCBIrequestV2Test" />
+        <item index="1" class="java.lang.String" itemvalue="Python.RemoteRequestV2CDSLSPQ2641" />
+        <item index="2" class="java.lang.String" itemvalue="Python.test1" />
+        <item index="3" class="java.lang.String" itemvalue="Python.RemoteRequestV2Test (1)" />
+        <item index="4" class="java.lang.String" itemvalue="Python.RemoteRequestV2Test" />
       </list>
     </recent_temporary>
   </component>
@@ -384,7 +323,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15203956" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21288837" sideWeight="0.116656646" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23901394" sideWeight="0.88334334" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29689175" sideWeight="0.88334334" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18327759" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -411,118 +350,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2351/Suite_20191114/UpdateHCVdb_CDSLSPQ2351.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="68" lean-forward="false" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2351/Suite_20191114/Parametres_db.json.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2351/Suite_20191114/ACCESSIONS_COMPLETE_GENOMES/NCBIdownloadGB.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2351/Suite_20191114/HCVAssemblyTemplate_CDSLSPQ2351.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/Bio/SeqIO/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="447" column="4" lean-forward="false" selection-start-line="447" selection-start-column="4" selection-end-line="447" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2351/Suite_20191114/Suite_20191204/UpdateHCVdb_CDSLSPQ2351.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2351/Suite_20191114/Suite_20191204/Parametres_db.json.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="111" lean-forward="true" selection-start-line="6" selection-start-column="111" selection-end-line="6" selection-end-column="111" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2351/Suite_20191114/Suite_20191204/ViroPhylo_test_CDSLSPQ2351.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="1185" column="86" lean-forward="false" selection-start-line="1185" selection-start-column="86" selection-end-line="1185" selection-end-column="86" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2351/Suite_20191114/Suite_20191204/HCVAssemblyTemplate_CDSLSPQ2351.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="287">
-          <caret line="145" column="82" lean-forward="true" selection-start-line="145" selection-start-column="82" selection-end-line="145" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/TEMP/IdbmPhylo_TEST.py" />
-    <entry file="file://U:/TEMP/REMOTE_REQUEST/MycoBank.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/TEMP/REMOTE_REQUEST/LSPQRequest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/TEMP/REMOTE_REQUEST/ISHAMrequest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="73" column="20" lean-forward="false" selection-start-line="73" selection-start-column="16" selection-end-line="73" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/Bio/Blast/NCBIWWW.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="294" column="15" lean-forward="false" selection-start-line="294" selection-start-column="10" selection-end-line="294" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/TEMP/REMOTE_REQUEST/NCBIrequestV2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9588">
-          <caret line="572" column="79" lean-forward="false" selection-start-line="572" selection-start-column="79" selection-end-line="572" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/TEMP/REMOTE_REQUEST/SilvaRequest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="32" column="43" lean-forward="true" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://U:/TEMP/REMOTE_REQUEST_TEST_20200114/SilvaRequest_test.py" />
-    <entry file="file://U:/TEMP/REMOTE_REQUEST_TEST_20200114/RemoteRequestV2_test.py" />
-    <entry file="file://U:/TEMP/REMOTE_REQUEST_TEST_20200114/NCBIrequestV2_test.py" />
-    <entry file="file://U:/TEMP/REMOTE_REQUEST_TEST_20200114/MycoBank_test.py" />
-    <entry file="file://U:/TEMP/REMOTE_REQUEST_TEST_20200114/LSPQRequest_test.py" />
-    <entry file="file://U:/TEMP/REMOTE_REQUEST_TEST_20200114/ISHAMrequest_test.py" />
     <entry file="file://U:/TEMP/REMOTE_REQUEST/RemoteRequestV2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8483">
@@ -667,14 +494,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/-762174762/__builtin__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="2090" column="8" lean-forward="false" selection-start-line="2090" selection-start-column="8" selection-end-line="2090" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python27/Lib/subprocess.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
@@ -683,17 +502,211 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/watchdog/observers/api.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="254" column="0" lean-forward="false" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2525/PourProduction/NCBIrequestV2Test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="99">
+          <caret line="590" column="23" lean-forward="false" selection-start-line="590" selection-start-column="20" selection-end-line="590" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2525/PourProduction/RemoteRequestV2Test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="51" column="55" lean-forward="true" selection-start-line="51" selection-start-column="55" selection-end-line="51" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2525/PourProduction/MycoBankTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2525/PourProduction/LSPQRequestTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2525/PourProduction/ISHAMrequestTest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/BION_20200226/IdbmPhylo_TEST.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="1472" column="45" lean-forward="false" selection-start-line="1472" selection-start-column="45" selection-end-line="1472" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://C:/WatchDogFiles/MiSeqRunTransferParam.yaml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="36" column="79" lean-forward="true" selection-start-line="36" selection-start-column="79" selection-end-line="36" selection-end-column="79" />
+        <state relative-caret-position="44">
+          <caret line="19" column="58" lean-forward="true" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/lib-tk/ttk.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="620" column="42" lean-forward="true" selection-start-line="620" selection-start-column="42" selection-end-line="620" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/NCBIrequestV2STANDARD.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="611" column="18" lean-forward="true" selection-start-line="503" selection-start-column="4" selection-end-line="611" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/RemoteRequestV2STANDARD.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="507" column="24" lean-forward="false" selection-start-line="507" selection-start-column="8" selection-end-line="507" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2017.2/system/python_stubs/-762174762/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="4134" column="8" lean-forward="false" selection-start-line="4134" selection-start-column="8" selection-end-line="4134" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/NCBIrequestV2CDSLSPQ2641.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="380" column="85" lean-forward="true" selection-start-line="380" selection-start-column="85" selection-end-line="380" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/SilvaRequestCDSLSPQ2641.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/MycoBankCDSLSPQ2641.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/ISHAMrequestCDSLSPQ2641.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/LSPQRequestCDSLSPQ2641.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/RemoteRequestV2CDSLSPQ2641.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="932">
+          <caret line="266" column="31" lean-forward="true" selection-start-line="266" selection-start-column="31" selection-end-line="266" selection-end-column="31" />
+          <folding>
+            <element signature="e#15#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/PourProduction/SilvaRequestCDSLSPQ2641.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/PourProduction/ISHAMrequestCDSLSPQ2641.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/PourProduction/LSPQRequestCDSLSPQ2641.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/PourProduction/MycoBankCDSLSPQ2641.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/PourProduction/NCBIrequestV2STANDARD.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/PourProduction/RemoteRequestV2CDSLSPQ2641.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="60" column="50" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="60" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://U:/PROJETS/DT1/C2/CDSLSPQ-2641/PourProduction/NCBIrequestV2CDSLSPQ2641.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="43" column="52" lean-forward="false" selection-start-line="43" selection-start-column="52" selection-end-line="43" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EmailSender.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-317">
+        <state relative-caret-position="17">
           <caret line="28" column="77" lean-forward="true" selection-start-line="28" selection-start-column="77" selection-end-line="28" selection-end-column="77" />
           <folding>
             <element signature="e#25#39#0" expanded="true" />
@@ -703,19 +716,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Logger.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-162">
+        <state relative-caret-position="17">
           <caret line="4" column="24" lean-forward="true" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/watchdog/observers/api.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="254" column="0" lean-forward="false" selection-start-line="254" selection-start-column="0" selection-end-line="254" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -729,32 +734,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://U:/TutorialTesting/Python/GENERAL_TEST/test1.py">
+    <entry file="file://$PROJECT_DIR$/Deamons.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        <state relative-caret-position="306">
+          <caret line="69" column="109" lean-forward="true" selection-start-line="69" selection-start-column="109" selection-end-line="69" selection-end-column="109" />
           <folding>
-            <element signature="e#25#34#0" expanded="true" />
+            <element signature="e#16#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CheckFinishedMiSeqRun.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="382" column="89" lean-forward="true" selection-start-line="382" selection-start-column="89" selection-end-line="382" selection-end-column="89" />
-          <folding>
-            <element signature="e#15#26#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="262">
+          <caret line="390" column="0" lean-forward="true" selection-start-line="390" selection-start-column="0" selection-end-line="390" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Deamons.py">
+    <entry file="file://U:/TutorialTesting/Python/GENERAL_TEST/test1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="90" column="53" lean-forward="true" selection-start-line="90" selection-start-column="53" selection-end-line="90" selection-end-column="53" />
+        <state relative-caret-position="238">
+          <caret line="14" column="46" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
           <folding>
-            <element signature="e#16#32#0" expanded="true" />
+            <element signature="e#25#34#0" expanded="true" />
           </folding>
         </state>
       </provider>

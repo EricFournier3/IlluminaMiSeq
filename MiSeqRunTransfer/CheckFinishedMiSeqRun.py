@@ -218,9 +218,19 @@ class Handler(FileSystemEventHandler):
 
         self.MiSeqRunObj.CreateIridaSampleSheet(good_and_bad_spec_dir,run_name)
 
-    def CheckIfIridaSamplesInRun(self):
-        if re.search('pulsenet',self.new_run_name):
-            return True
+    def CheckIfIridaSamplesInRun(self,sample_sheet):
+        header_readed = False
+
+        with open(sample_sheet) as ss:
+            for line in ss:
+                if(re.search('^Sample_ID',line)):
+                    header_readed = True
+                    continue
+                elif header_readed:
+                    line_list = str(line).split(',')
+                    #print 'line_list ', line_list
+                    if(str(line_list[8]) == '2'):
+                        return True
 
         return False
 
@@ -378,7 +388,8 @@ class Handler(FileSystemEventHandler):
 
                 self.ExportToLspqMiSeqExperimental()
 
-                if self.CheckIfIridaSamplesInRun():
+
+                if self.CheckIfIridaSamplesInRun(self.MiSeqRunObj.GetSampleSheetPath()):
 
                     self.CreateIridaSampleSheet(self.file_size_manager,self.new_run_name)
                     #self.MiSeqRunObj.MonitorIridaSamplesTransfer(self.new_run_name)
