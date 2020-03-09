@@ -45,3 +45,8 @@ iridauploader_thread_number:
   debug_inspq_6499_J: 1
   no_debug_inspq_8719: 1
   no_debug_inspq_8900: 1
+iridauploader_mode:
+- debug_inspq_6499_I: "OFF"
+  debug_inspq_6499_J: "OFF"
+  no_debug_inspq_8719: "ON"
+  no_debug_inspq_8900: "ON"

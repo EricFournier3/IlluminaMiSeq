@@ -35,6 +35,7 @@ class IridaUploader():
         self.irida_tranfer_status_file = os.path.join(self.run_path,"realtime_irida_uploader_status.log")
 
         self.thread_number = self.parameter_manager.GetThreadNumber()
+        self.mode = self.parameter_manager.GetMode()
 
         self.irida_tranfer_status_logger = Logger.IridaTransferLogger('irida',self.irida_tranfer_status_file)
 

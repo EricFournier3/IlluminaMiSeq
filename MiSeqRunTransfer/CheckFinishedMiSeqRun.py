@@ -8,6 +8,7 @@ import Logger
 import ParameterHandler
 import re
 from EmailSender import *
+from Stat import MiSeqStatComputer
 
 """
 Eric Fournier 2019-07-30
@@ -40,6 +41,10 @@ Liste des modifications
     
 - Modif_20200214: Eric Fournier 2020-02-14
     > Appeler le IridaUploader
+    
+- Modif_20200306 Eric Fournier 2020-03-06
+    > Choisir d executer ou non le irida uploader
+    > Calcul des statistique MiSeq
 
 """
 
@@ -223,7 +228,7 @@ class Handler(FileSystemEventHandler):
 
         with open(sample_sheet) as ss:
             for line in ss:
-                if(re.search('^Sample_ID',line)):
+                if(re.search('Sample_ID',line)):
                     header_readed = True
                     continue
                 elif header_readed:
@@ -365,8 +370,6 @@ class Handler(FileSystemEventHandler):
                 #Arborescence de la run sur le MiSeq
                 self.MiSeqRunObj.SetPath()
 
-
-
                 #On defini le nouveau nom de la run
                 self.SetNewRunName()
 
@@ -383,11 +386,8 @@ class Handler(FileSystemEventHandler):
 
                 self.ftl.LogMessage("Export des fichiers du MiSeq run {0} vers {1} en cours".format(runname,self.LspqMiSeqRunObj.GetRunPath()))
 
-
                 #Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\1_Experimental
-
                 self.ExportToLspqMiSeqExperimental()
-
 
                 if self.CheckIfIridaSamplesInRun(self.MiSeqRunObj.GetSampleSheetPath()):
 
@@ -397,7 +397,6 @@ class Handler(FileSystemEventHandler):
                 else:
                     self.ImportIridaUploaderInfoFile()
 
-
                 #Concatener les sample sheet
                 self.ConcatSampleSheet()
 
@@ -406,6 +405,10 @@ class Handler(FileSystemEventHandler):
                 #Export des fichiers vers S:\\Partage\LSPQ_MiSeq\RunName\3_SequencesBrutes
                 #Modif_20200211
                 self.ExportToLspqMiSeqSequenceBrute()
+
+                #Modif_20200306
+                self.ftl.LogMessage("Calcul des statistiques pour {0}".format(runname))
+                self.MiSeqRunObj.ComputeQualStat(self.LspqMiSeqRunObj.GetRunPath())
 
                 self.ftl.LogMessage("Export des fichiers du MiSeq run {0} vers {1} est termine".format(runname, self.LspqMiSeqRunObj.GetRunPath()))
 
@@ -420,7 +423,6 @@ class Handler(FileSystemEventHandler):
                 del self.LspqMiSeqRunObj
                 del self.path_setter
 
-
 class RunOnMiSeq():
     """
     Structure de la run terminee sur le MiSeq
@@ -432,6 +434,18 @@ class RunOnMiSeq():
 
     def GetRunPath(self):
         return  self.runpath
+
+    def ComputeQualStat(self,lspq_miseq_dir_path):
+        '''
+        Calculs de statistique des qualité
+        :return:
+        '''
+        self.stat_computer = MiSeqStatComputer(self.runpath,lspq_miseq_dir_path)
+        self.stat_computer.ComputeRunStat()
+
+        self.stat_computer.ComputeSamplesStat()
+
+        self.stat_computer.WriteStat()
 
     def CreateIridaSampleSheet(self,good_and_bad_spec_dir,lspq_miseq_dir_name):
         """
@@ -494,7 +508,12 @@ class RunOnMiSeq():
         #TODO verfier et activer le check point => besoin d un client checkpoint
         from Deamons import IridaUploader
         irida_uploader_obj = IridaUploader(self.runpath,lspq_miseq_run_name,my_debug_level)
-        irida_uploader_obj.Init()
+
+        #Modif_20200306
+        if irida_uploader_obj.mode == "ON":
+            irida_uploader_obj.Init()
+        else:
+            irida_uploader_obj.irida_tranfer_status_logger.LogMessage("Irida uploader is disabled")
 
     def WriteGoodAndBadIridaSpecFile(self,good_and_bad_iridaspec_dir,good_file_name,bad_file_name):
 

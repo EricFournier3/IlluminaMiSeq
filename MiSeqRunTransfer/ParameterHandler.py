@@ -34,8 +34,14 @@ class IridaUploaderManager():
         self.all_dict = yaml.load(self.param_file_handle)
         self.thread_number = int(self.all_dict['iridauploader_thread_number'][0][self.debug_val])
 
+        #Modif_20200306
+        self.mode = self.all_dict['iridauploader_mode'][0][self.debug_val]
+
     def GetThreadNumber(self):
         return self.thread_number
+
+    def GetMode(self):
+        return self.mode
 
 
 class ThreadManager():
