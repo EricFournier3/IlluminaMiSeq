@@ -16,7 +16,7 @@ Script de transfert automatique des runs MiSeq terminées vers S:\\Partage\LSPQ_
 
 Procedure pour compiler avec pyinstaller:
     1- Copier les scripts CheckFinishedMiSeqRun.py, Logger.py et ParameterHandler.py Deamons.py EmailSender.py Tools.py dans C:\Users\foueri01\Documents\PyinstallerCompilation
-    2- aller dans C:\Users\foueri01\Documents\PyinstallerCompilation avec une console ligne de commande
+    2- aller dans C:\Users\foueri01\Documents\PyinstallerCompilation avec une console ligne de commande 
     3- Executer la commande suivante
             pyinstaller.exe --onefile --icon=watchdog.ico CheckFinishedMiSeqRun.py
     4- L executable CheckFinishedMiSeqRun.exe sera dans C:\Users\foueri01\Documents\PyinstallerCompilation\Dist

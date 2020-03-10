@@ -17,6 +17,7 @@ class IridaUploader():
         self.lspq_miseq_run_name = lspq_miseq_run_name
         self.debug_level = debug_level
         self.exec_name = 'iridauploader'
+        self.vpn_cmd = "rC:\TEMP\cp.bat"
         self.parser = 'miseq'
 
         self.thread_manager = ThreadManager(debug_level=self.debug_level)
@@ -58,11 +59,14 @@ class IridaUploader():
                 self.try_number += 1
                 self.irida_tranfer_status_logger.LogMessage("IridaUploader try " + str(self.try_number))
                 log_handler = open(self.log_file, 'a')
+
+                self.ConnectVpn()
+
                 #avec multithread
-                #process = subprocess.Popen([self.exec_name,'-m','-t',str(self.thread_number),'-d',self.run_path,'-cr',self.parser],stdout=log_handler,stderr=log_handler,shell=True)
+                process = subprocess.Popen([self.exec_name,'-m','-t',str(self.thread_number),'-d',self.run_path,'-cr',self.parser],stdout=log_handler,stderr=log_handler,shell=True)
 
                 #sans multithread
-                process = subprocess.Popen([self.exec_name, '-d', self.run_path, '-cr', self.parser],stdout=log_handler, stderr=log_handler, shell=True)
+                #process = subprocess.Popen([self.exec_name, '-d', self.run_path, '-cr', self.parser],stdout=log_handler, stderr=log_handler, shell=True)
                 process.communicate()
                 process.terminate()
                 log_handler.close()
@@ -73,6 +77,11 @@ class IridaUploader():
 
         self.irida_tranfer_status_logger.LogMessage("Irida transfer finished")
             
+    def ConnectVpn(self):
+        FNULL = open(os.devnull, 'w')
+        process = subprocess.Popen([r"C:\TEMP\cp.bat"], stdout=FNULL, stderr=subprocess.STDOUT, shell=True)
+        process.communicate()
+        process.terminate()
 
     def CheckStatusOk(self):
 
