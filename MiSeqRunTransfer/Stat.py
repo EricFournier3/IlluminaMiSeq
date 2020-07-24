@@ -61,8 +61,13 @@ class MiSeqStatComputer():
         self.cluster_density_ = 0
         self.perc_over_q30 = 0
 
+        #print('RUN PATH IS ', self.run_path)
+
         self.Dataset = InteropDataset(self.run_path)
         self.experiment_name = self.Dataset.Metadata().experiment_name
+
+        #print('experiment_name IS ', self.experiment_name)
+        #print('lspq_miseq_dir_path IS ', self.lspq_miseq_dir_path)
 
         self.r1_samples_qual = {}
         self.r2_samples_qual = {}
@@ -144,6 +149,8 @@ class MiSeqStatComputer():
         Enregistrer les statistiques dans un fichier
         :return:
         """
+
+        #print('IN WRITE STAT')
         stat_file = os.path.join(self.lspq_miseq_dir_path,'2_MiSeqRunTrace',self.experiment_name.split('_')[2],'FinalMiSeqStat_' + self.experiment_name + ".txt")
 
         with open(stat_file,'w') as stat_file_handle:

@@ -86,6 +86,7 @@ class Watcher:
 
         # Le repertoire a scanner par le watchdog
         self.DIRECTORY_TO_WATCH =self.path_setter.GetMiSeqRootDir()
+        #print('DIRECTORY_TO_WATCH ', self.DIRECTORY_TO_WATCH)
 
         self.path_setter.CloseParamFile()
 
